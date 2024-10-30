@@ -1,0 +1,37 @@
+import = [
+"~/.config/alacritty/catppuccin.toml",
+"~/.config/alacritty/keybindings.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+dimensions = {columns = 100,lines = 40}
+position = {x=100,y=100}
+padding = {x=10,y=10}
+dynamic_padding = true
+decorations = "None"
+opacity = 0.9
+blur = true
+startup_mode = "Windowed"
+title = "wendisx"
+dynamic_title = false
+resize_increments = true
+option_as_alt = "None"
+
+[scrolling]
+history = 2000
+multiplier = 3
+
+[font]
+normal = {family = "hack nerd font",style = "Regular"}
+size = 15
+offset = {x=0,y=0}
+
+[cursor]
+style = {shape = "Block",blinking = "Off"}
+
+[mouse]
+hide_when_typing = true
+
