@@ -1,1 +1,4 @@
 # my dotfiles
+
++ alacritty
+
