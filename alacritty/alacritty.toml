@@ -1,5 +1,5 @@
 import = [
-"~/.config/alacritty/catppuccin.toml",
+"~/.config/alacritty/catppuccin-mocha.toml",
 "~/.config/alacritty/keybindings.toml"
 ]
 
@@ -7,7 +7,7 @@ import = [
 TERM = "xterm-256color"
 
 [window]
-dimensions = {columns = 100,lines = 40}
+dimensions = {columns = 120,lines = 45}
 position = {x=100,y=100}
 padding = {x=10,y=10}
 dynamic_padding = true
@@ -26,7 +26,7 @@ multiplier = 3
 
 [font]
 normal = {family = "hack nerd font",style = "Regular"}
-size = 15
+size = 15 
 offset = {x=0,y=0}
 
 [cursor]
