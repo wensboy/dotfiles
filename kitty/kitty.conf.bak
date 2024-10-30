@@ -1,0 +1,45 @@
+#include config
+globinclude kitty.d/*.conf
+
+
+
+# Font
+
+font_family      family="Hack Nerd Font"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size 15
+ 
+
+# Cursor
+
+cursor #FFE5CC
+cursor_text_color #FF0000
+cursor_shape_unfocused hollow
+cursor_shape block
+shell_integration no-cursor
+
+# Scrollback
+scrollback_indicator_opacity 1.0
+
+
+# Mouse
+
+url_color #00FFFF
+url_style curly
+
+# Tab bar
+
+tab_bar_edge bottom
+
+
+# Windows layout
+
+hide_window_decorations yes
+window_padding_width 10
+remember_window_size  no
+initial_window_width  1600
+initial_window_height 900
+window_resize_step_cells 2
+window_resize_step_lines 2
