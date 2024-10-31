@@ -1,12 +1,13 @@
 # my dotfiles
 
-## Terminal
-+ alacritty
-+ kitty
+## list
 
----
+- alacritty
+- rofi
+- picom
+- i3
+- polybar
+- kitty
+- neovim
 
-## editor
-+ neovim
 
----

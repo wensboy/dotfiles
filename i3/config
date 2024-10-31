@@ -22,6 +22,10 @@ font pango: Hack Nerd Font 10
 # AutoStart Scripts
 exec_always ~/.config/i3/scripts/mouseTouch.sh
 
+# color scheme
+include ~/.config/i3/colorSchemes/catppuccin-frappe.conf
+
+# key binding
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -55,14 +59,14 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty 
+bindsym $mod+Return exec kitty 
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # dmenu --> rofi
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+p exec --no-startup-id rofi -show run -theme ~/.config/rofi/themes/nord.rasi
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
