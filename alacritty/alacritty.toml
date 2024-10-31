@@ -12,7 +12,7 @@ position = {x=100,y=100}
 padding = {x=10,y=10}
 dynamic_padding = true
 decorations = "None"
-opacity = 0.9
+opacity = 0.7
 blur = true
 startup_mode = "Windowed"
 title = "wendisx"
@@ -26,7 +26,7 @@ multiplier = 3
 
 [font]
 normal = {family = "hack nerd font",style = "Regular"}
-size = 15 
+size = 10 
 offset = {x=0,y=0}
 
 [cursor]

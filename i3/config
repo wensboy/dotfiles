@@ -32,6 +32,8 @@ include ~/.config/i3/colorSchemes/catppuccin-frappe.conf
 exec --no-startup-id dex --autostart --environment i3
 exec_always feh --bg-scale ~/Pictures/yecao01.png 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+exec_always --no-startup-id fcitx5 
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -59,7 +61,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty 
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -199,3 +201,12 @@ bindsym $mod+r mode "resize"
 #bar {
 #        status_command i3status
 #}
+
+# Inner gaps for all windows: space between two adjacent windows (or split containers).
+gaps inner 10px
+# Outer gaps for all windows: space along the screen edges.
+gaps outer 10px
+
+# delete border docoration
+default_border pixel 2
+default_floating_border pixel 2
