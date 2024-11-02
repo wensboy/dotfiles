@@ -12,7 +12,7 @@ position = {x=100,y=100}
 padding = {x=10,y=10}
 dynamic_padding = true
 decorations = "None"
-opacity = 0.7
+opacity = 0.75
 blur = true
 startup_mode = "Windowed"
 title = "wendisx"
