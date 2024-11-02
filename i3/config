@@ -206,7 +206,7 @@ bindsym $mod+r mode "resize"
 # Inner gaps for all windows: space between two adjacent windows (or split containers).
 gaps inner 10px
 # Outer gaps for all windows: space along the screen edges.
-gaps outer 10px
+gaps outer 2px
 
 # delete border docoration
 default_border pixel 2
