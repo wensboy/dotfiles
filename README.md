@@ -9,5 +9,7 @@
 - polybar
 - kitty
 - neovim
+- ranger
+
 
 
