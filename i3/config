@@ -27,8 +27,8 @@ include ~/.config/i3/colorSchemes/catppuccin-frappe.conf
 
 # key binding
 bindsym $mod+x exec ~/.config/i3/scripts/lock.sh
-bindsym $mod+f3 exec brightnessctl -d "amdgpu_bl1" s 2%-
-bindsym $mod+f4 exec brightnessctl -d "amdgpu_bl1" s +2%
+bindsym $mod+Shift+a exec --no-startup-id brightnessctl s +5%
+bindsym $mod+Shift+d exec --no-startup-id brightnessctl s 5%-
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
