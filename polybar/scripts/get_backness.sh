@@ -1,5 +1,5 @@
 #!/bin/sh
 
-cat /sys/class/backlight/amdgpu_bl1/actual_brightness
+brightness=$(brightnessctl | awk '{match($0,/\(.*?\)/,arr);print arr[0]}')
 
-#echo $backness
+echo $brightness
