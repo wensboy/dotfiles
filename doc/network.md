@@ -2,8 +2,8 @@
 os:
     - manjaro[based on arch]
 tools:
-    - bluez
-    - bluez-utils
+    - networkmanager
+    - nmctl
 tags:
     - linux
     - command
