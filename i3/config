@@ -39,6 +39,7 @@ exec_always feh --bg-scale ~/Pictures/yecao01.png
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id fcitx5 
+exec_always --no-startup-id ~/.config/dunst/launch.sh
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.

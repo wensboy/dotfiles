@@ -9,4 +9,4 @@ killall -q polybar
 # running polybar with default config
 polybar i3-polybar 2>&1 | tee -a /tmp/polybar.log & disown
 
-echo "Polybar launched"
+#echo "Polybar launched"
