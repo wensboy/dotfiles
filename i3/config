@@ -29,6 +29,7 @@ include ~/.config/i3/colorSchemes/catppuccin-frappe.conf
 bindsym $mod+x exec ~/.config/i3/scripts/lock.sh
 bindsym $mod+Shift+a exec --no-startup-id brightnessctl s +5%
 bindsym $mod+Shift+d exec --no-startup-id brightnessctl s 5%-
+bindsym $mod+Shift+f exec --no-startup-id ~/.config/i3/scripts/find.sh
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
