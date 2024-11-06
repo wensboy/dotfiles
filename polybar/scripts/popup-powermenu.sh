@@ -15,7 +15,7 @@ case "$1" in
                 hibernate
                 ;;
             Logout)
-                bspc quit
+                i3-msg exit
                 ;;
         esac
         ;;
