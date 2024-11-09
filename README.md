@@ -4,6 +4,8 @@ Welcome to my dotfiles, I hope this is helpful to you.
 If you want to have a unique working environment on your own Linux device, 
 just like me, follow me.
 
+![preview](screenshot/preview.png)
+
 ## Pre-requirements
 
 + Learn about the mechanics of symbolic linking
