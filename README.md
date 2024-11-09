@@ -22,13 +22,12 @@ just like me, follow me.
 - picom
 
 - i3wm
-
--- feh
--- fcitx5
--- brightnessctl
--- bluetoothctl
--- dunst
--- networkmanager
+ - feh
+ - fcitx5
+ - brightnessctl
+ - bluetoothctl
+ - dunst
+ - networkmanager
 
 - polybar
 -- pacman-contrib
