@@ -64,7 +64,7 @@ run_cmd() {
 		if [[ $1 == '--shutdown' ]]; then
 			 poweroff
 		elif [[ $1 == '--reboot' ]]; then
-			systemctl reboot
+			 reboot
 		elif [[ $1 == '--suspend' ]]; then
 			mpc -q pause
 			amixer set Master mute
