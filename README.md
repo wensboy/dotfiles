@@ -34,11 +34,10 @@ just like me, follow me.
 - polybar
   - pacman-contrib
 
- 
 - kitty
 
 - neovim
 
 - ranger
 
-
+- neofetch
