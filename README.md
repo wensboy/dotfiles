@@ -22,6 +22,7 @@ just like me, follow me.
 - picom
 
 - i3wm
+
 -- feh
 -- fcitx5
 -- brightnessctl
