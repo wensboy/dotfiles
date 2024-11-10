@@ -19,10 +19,9 @@ just like me, follow me.
 
 ---
 
-operating system:
-    - based on arch
-others:
-    - all is ok :) 
+>operating system: based on arch
+
+>others: all is ok :) 
 
 ---
 
