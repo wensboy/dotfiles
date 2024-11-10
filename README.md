@@ -15,6 +15,17 @@ just like me, follow me.
 + Able to solve some problems on their own
 + Enduring curiosity, eternal passion :)
 
+**About device information**
+
+---
+
+operating system:
+    - based on arch
+others:
+    - all is ok :) 
+
+---
+
 ## Necessary tools
 
 - alacritty
