@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
-## Author : Aditya Shakya (adi1090x)
-## Github : @adi1090x
-#
-## Rofi   : Power Menu
-#
-## Available Styles
-#
-## style-1   style-2   style-3   style-4   style-5
-
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/type-1"
 theme='style-2'
@@ -58,13 +49,14 @@ run_rofi() {
 }
 
 # Execute Command
+# poweroff and reboot can't work?
 run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
 		if [[ $1 == '--shutdown' ]]; then
-			 poweroff
+			 systemctl poweroff
 		elif [[ $1 == '--reboot' ]]; then
-			 reboot
+			 systemctl reboot
 		elif [[ $1 == '--suspend' ]]; then
 			mpc -q pause
 			amixer set Master mute
