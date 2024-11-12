@@ -5,6 +5,8 @@ return {
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
     config = function()
-	require('barbar').setup()
+	require('barbar').setup({
+	    focus_on_close = 'previous'
+	})
     end
 }
