@@ -6,7 +6,6 @@ return {
     },
     config = function()
 	require('barbar').setup({
-	    focus_on_close = 'previous'
 	})
     end
 }
