@@ -21,9 +21,13 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
      {'romgrk/barbar.nvim',
-    dependencies = {
+	dependencies = {
       'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-    }
+    },
+	priority = 999
+    },
+    {
+	'NvChad/nvim-colorizer.lua'
     }
 }
