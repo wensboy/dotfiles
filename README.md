@@ -54,4 +54,4 @@ just like me, follow me.
 
 - dunst
 
--xborder
+- xborder
