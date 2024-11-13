@@ -51,3 +51,7 @@ just like me, follow me.
 - ranger
 
 - neofetch
+
+- dunst
+
+-xborder

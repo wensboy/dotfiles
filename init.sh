@@ -58,6 +58,7 @@ STOW_PACKAGES=(
 COMMAND='pacman -S --noconfirm'
 
 #delete a profile that already exists
+echo "Deletes an existing configuration directory..."
 for path in "${CONFIG_PATH[@]}";
 do
     if [ -d "$HOME/.config/$path" ]
@@ -83,10 +84,10 @@ for package in "${SOFTWARE_PACKAGES[@]}"
 do
     if ! pacman -Qi "$package" &>/dev/null;
     then
-	echo "Installing $package..."
-	sudo $COMMAND "$package"
+	echo "Installing: $package..."
+	eval "sudo $COMMAND $package"
     else
-	echo "$package is already installed!"
+	echo "$package already exists!"
     fi
 done
 
@@ -96,20 +97,21 @@ echo "CLeaning up dependecies..."
 sudo pacman -Sc --noconfirm
 
 # install software complete
-echo "successful! installing complete!"
+echo "--->Installing completed!!!<---"
 
 # create config dir
 CREATE_CONFIG_DIR(){
+    echo "Create config dir..."
     for config_dir in "$CONFIG_PATH[@]"
     do
-	echo "Createing: $config_dir configuration dir..."
+	echo "Createing: $config_dir"
 	mkdir $HOME/.config/$config_dir
     done
 }
 
 # create config link
 CREATE_CONFIG_LINK(){
-    echo "Starting creating configuration link..."
+    echo "Create config link..."
     cd $HOME/.dotfiles
     for config_link in "$STOW_PACKAGES[@]"
     do
@@ -124,7 +126,11 @@ CREATE_CONFIG_LINK(){
 }
 
 # Execute functions
+
 main(){
-    CREATE_CONFIG_DIR()
-    CREATE_CONFIG_LINK()
+    echo "--->LINK<---"
+    CREATE_CONFIG_DIR
+    CREATE_CONFIG_LINK
 }
+
+main
