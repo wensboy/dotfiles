@@ -28,5 +28,12 @@ return {
     },
     {
 	"folke/which-key.nvim"
+    },
+    {
+	"floke/noice.nvim",
+	event = "Verylazy",
+	 dependencies = {
+	"MunifTanjim/nui.nvim"
+    }
     }
 }
