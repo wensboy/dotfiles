@@ -7,7 +7,7 @@ state=$(echo $brightness | tr -d '%')
 
 if [[ $state -le 20 ]]
 then
-    echo " $brightness"
+    echo " $brightness"
 else
     echo " $brightness"
 fi
