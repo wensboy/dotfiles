@@ -1,33 +1,32 @@
 #!/usr/bin/env bash
-
 # Current Theme
-dir="$HOME/.config/rofi/powermenu/type-1"
-theme='style-2'
+dir="$HOME/.config/rofi/powermenu/type-2"
+theme='style-9'
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
 # Options
-shutdown=' Shutdown'
-reboot=' Reboot'
-lock=' Lock'
-suspend=' Suspend'
-logout=' Logout'
-yes=' Yes'
-no=' No'
+shutdown=''
+reboot=''
+lock=''
+suspend=''
+logout=''
+yes=''
+no=''
 
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p "$host" \
+		-p "Uptime: $uptime" \
 		-mesg "Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 }
 
 # Confirmation CMD
 confirm_cmd() {
-	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
+	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
 		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
 		-theme-str 'listview {columns: 2; lines: 1;}' \
 		-theme-str 'element-text {horizontal-align: 0.5;}' \
@@ -49,19 +48,18 @@ run_rofi() {
 }
 
 # Execute Command
-# poweroff and reboot can't work?
 run_cmd() {
-	selected="$(confirm_exit)"
-	if [[ "$selected" == "$yes" ]]; then
-		if [[ $1 == '--shutdown' ]]; then
-			 systemctl poweroff
-		elif [[ $1 == '--reboot' ]]; then
-			 systemctl reboot
-		elif [[ $1 == '--suspend' ]]; then
+	#selected="$(confirm_exit)"
+	#if [[ "$selected" == "$yes" ]]; then
+		if [[ $1 == 'shutdown' ]]; then
+		    	poweroff
+		elif [[ $1 == 'reboot' ]]; then
+			reboot
+		elif [[ $1 == 'suspend' ]]; then
 			mpc -q pause
 			amixer set Master mute
 			systemctl suspend
-		elif [[ $1 == '--logout' ]]; then
+		elif [[ $1 == 'logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
 				openbox --exit
 			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
@@ -72,31 +70,31 @@ run_cmd() {
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
 			fi
 		fi
-	else
-		exit 0
-	fi
+	#else
+	#	exit 0
+	#fi
 }
 
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
-		run_cmd --shutdown
+		run_cmd shutdown
         ;;
     $reboot)
-		run_cmd --reboot
+		run_cmd reboot
         ;;
     $lock)
 		if [[ -x '/usr/bin/betterlockscreen' ]]; then
 			betterlockscreen -l
 		elif [[ -x '/usr/bin/i3lock' ]]; then
-			~/.config/i3/scripts/lock.sh
+			~/.config/i3/scripts/lock.sh	
 		fi
         ;;
     $suspend)
-		run_cmd --suspend
+		run_cmd suspend
         ;;
     $logout)
-		run_cmd --logout
+		run_cmd logout
         ;;
 esac
