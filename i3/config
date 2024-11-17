@@ -35,7 +35,7 @@ bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/scripts/man_preview.sh
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-exec_always feh --bg-scale ~/Pictures/bookroom.png 
+exec_always feh --bg-scale ~/Pictures/wallpapers/bookroom.png 
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
 exec_always --no-startup-id fcitx5 
