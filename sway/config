@@ -251,4 +251,4 @@ default_border pixel 3
 ### gaps
 #
 gaps outer 3
-gaps inner 9
+gaps inner 10

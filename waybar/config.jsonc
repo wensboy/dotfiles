@@ -3,8 +3,9 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 35, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
+    "width": 1892, // Waybar width
     "spacing": 2, // Gaps between modules (4px)
+    "margin": 3,
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
