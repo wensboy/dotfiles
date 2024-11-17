@@ -12,13 +12,13 @@ set $up k
 set $right l
 
 #terminal emulator
-set $terminal alacritty
+set $terminal kitty
 
 #
 ### font
 #
 
-font Hack Nerd Font 10
+font Hack Nerd Font 12
 
 #
 ### Auto start applications
