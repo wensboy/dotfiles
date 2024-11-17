@@ -39,7 +39,7 @@ exec_always fcitx5
 #list all outputs: swaymsg -t get_outputs
 output eDP-1 bg $wallpaper stretch
 output eDP-1 resolution 1920x1200 position 1920,0
-client.focused $color0 $background $foreground $color7 $background
+client.focused $foreground $background $foreground $color7 $background
 
 #
 ### Idle configuration
@@ -246,6 +246,7 @@ include /etc/sway/config.d/*
 ### border
 #
 default_border pixel 3
+default_floating_border pixel 3 
 
 #
 ### gaps
