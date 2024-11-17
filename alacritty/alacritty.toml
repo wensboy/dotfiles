@@ -26,7 +26,7 @@ multiplier = 3
 
 [font]
 normal = {family = "hack nerd font",style = "Regular"}
-size = 10 
+size = 14 
 offset = {x=0,y=0}
 
 [cursor]
