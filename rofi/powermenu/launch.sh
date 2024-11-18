@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # Current Theme
-dir="$HOME/.config/rofi/powermenu/type-2"
-theme='style-9'
+dir="$HOME/.config/rofi/powermenu/type-1"
+theme='style-2'
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
 # Options
-shutdown=''
-reboot=''
-lock=''
-suspend=''
-logout=''
+shutdown=' Shutdown'
+reboot=' Reboot'
+lock=' Lock'
+suspend=' Suspend'
+logout=' Logout'
 #yes=''
 #no=''
 
@@ -68,6 +68,8 @@ run_cmd() {
 				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+			elif [[ "$DESKTOP_SESSION" == 'sway' ]]; then
+				swaymsg exit		
 			fi
 		fi
 	#else
@@ -89,6 +91,8 @@ case ${chosen} in
 			betterlockscreen -l
 		elif [[ -x '/usr/bin/i3lock' ]]; then
 			~/.config/i3/scripts/lock.sh	
+		elif [[ -x '/usr/bin/swaylock' ]]; then
+			~/.config/sway/scripts/lock.sh
 		fi
         ;;
     $suspend)

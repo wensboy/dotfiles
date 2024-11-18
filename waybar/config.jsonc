@@ -20,10 +20,9 @@
 	    "1": " ",
 	    "2": " ",
 	    "3": " ",
-	    "4": " ",
+	    "4": " ",
 	    "urgent": " ",
-	    "focused": " ",
-	    "default": " "
+	    "default": " "
 	    }
 	},
     "pulseaudio": {
@@ -89,6 +88,7 @@
             ]
         },
         "format-full": " {capacity}%",
+	"format-alt": " {time}",
         "interval": 5,
         "states": {
             "warning": 20,
