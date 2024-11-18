@@ -36,7 +36,7 @@
 		}
 	},
     "network": {
-	"format-wifi" : "{icon} {essid}",
+	"format-wifi" : "{icon} ({signalStrength}%) {essid}",
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
         "format-ethernet": "󰀂",
 	"format-alt" : "󱛇",
@@ -135,7 +135,15 @@
 	},
     "custom/power":{
         "format": " ",
-        "on-click": "~/.config/rofi/powermenu/launch.sh"
+	"tooltip": false,
+	"menu": "on-click",
+	"menu-file": "$HOME/.config/waybar/power_menu.xml",
+	"menu-actions": {
+		"shutdown": "poweroff",
+		"reboot": "reboot",
+		"suspend": "systemctl suspend",
+		"hibernate": "systemctl hibernate"
+	}
 	},
     "custom/updates":{
         "format": "  {}",
