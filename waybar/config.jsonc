@@ -13,6 +13,19 @@
 	    "clock",
 	    "battery",
 	    "custom/power"],
+    "sway/workspaces": {
+	    "format": "{icon}",
+	    "on-click": "activate",
+	    "format-icons": {
+	    "1": " ",
+	    "2": " ",
+	    "3": " ",
+	    "4": " ",
+	    "urgent": " ",
+	    "focused": " ",
+	    "default": " "
+	    }
+	},
     "pulseaudio": {
 		"tooltip": false,
 		"scroll-step": 2,
@@ -116,7 +129,7 @@
         "on-click": "playerctl play-pause"
 	},
     "custom/launcher":{
-        "format": " ",
+        "format": " ",
         "on-click": "~/.config/rofi/launch.sh",
         "on-click-right": "killall rofi"
 	},
