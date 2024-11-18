@@ -30,7 +30,7 @@
 		"scroll-step": 2,
 		"format": "{icon} {volume}%",
 		"format-muted": " {volume}%",
-		"on-click": "",
+		"on-click": "pavucontrol",
 		"format-icons": {
 			"default": [" ", " ", " "]
 		}
