@@ -29,6 +29,7 @@ font Hack Nerd Font 12
 #
 exec_always ~/.config/waybar/launch.sh
 exec_always fcitx5
+exec_always swaync
 
 #
 ### Output configuration
