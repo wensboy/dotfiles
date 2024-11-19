@@ -170,7 +170,7 @@ window#waybar.hidden {
 	border-radius: 10px;
 	transition: none;
 	color: #161320;
-	background: @color0;
+	background: @color12;
 }
 
 #tray {
