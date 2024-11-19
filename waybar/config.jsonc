@@ -89,7 +89,7 @@
                 "󰁹"
             ]
         },
-        "format-full": " {capacity}%",
+        "format-full": " {capacity}%",
 	"format-alt": " {time}",
         "interval": 5,
         "states": {
