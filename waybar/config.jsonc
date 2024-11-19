@@ -145,7 +145,8 @@
 	"menu": "on-click",
 	"menu-file": "$HOME/.config/waybar/power_menu.xml",
 	"menu-actions": {
-		"shutdown": "poweroff",
+		"lock": "$HOME/.config/sway/scripts/lock.sh",
+		"poweroff": "poweroff",
 		"reboot": "reboot",
 		"suspend": "systemctl suspend",
 		"hibernate": "systemctl hibernate"
