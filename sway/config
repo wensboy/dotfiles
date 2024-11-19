@@ -246,6 +246,12 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 2%+
 bindsym $mod+x exec ~/.config/sway/scripts/lock.sh
 
 #
+### swaync client
+#
+
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
+#
 ### include extend config files
 #
 
