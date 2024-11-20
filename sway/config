@@ -38,8 +38,10 @@ exec_always swaync
 #eg:output HDMI-A-1 resolution 1920x1080 position 1920,0
 #eg:output <outputs> bg /path/to/bg <option>
 #list all outputs: swaymsg -t get_outputs
-output eDP-1 bg $wallpaper stretch
-output eDP-1 resolution 1920x1200 position 1920,0
+output eDP-1 {
+	bg $wallpaper stretch
+	resolution 1920x1200 position 1920,0
+}
 client.focused $foreground $foreground $foreground $foreground $foreground
 
 #
@@ -260,11 +262,18 @@ include /etc/sway/config.d/*
 #
 ### border
 #
+
 default_border pixel 3
 default_floating_border pixel 3 
 
 #
 ### gaps
 #
+
 gaps outer 3
 gaps inner 10
+
+
+#
+### 
+#
