@@ -40,7 +40,7 @@ exec_always swaync
 #list all outputs: swaymsg -t get_outputs
 output eDP-1 bg $wallpaper stretch
 output eDP-1 resolution 1920x1200 position 1920,0
-client.focused $foreground $background $foreground $color7 $background
+client.focused $foreground $foreground $foreground $foreground $foreground
 
 #
 ### Idle configuration
