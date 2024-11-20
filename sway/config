@@ -254,6 +254,12 @@ bindsym $mod+x exec ~/.config/sway/scripts/lock.sh
 bindsym $mod+Shift+n exec swaync-client -t -sw
 
 #
+### screenshot
+#
+
+bindsym $mod+Shift+s exec grim -g "$(slurp)"
+ 
+#
 ### include extend config files
 #
 
