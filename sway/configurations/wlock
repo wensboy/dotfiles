@@ -8,10 +8,10 @@ color=1f1d2e80
 indicator
 indicator-radius=200
 indicator-thickness=20
-line-color=ffffff
-ring-color=b4f7f7
+line-color=b4f7f7
+ring-color=b4f7f700
 inside-color=38464600
-key-hl-color=F97721
+key-hl-color=66ffb2
 separator-color=00000000
 text-color=09FFE7
 text-caps-lock-color=""
