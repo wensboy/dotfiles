@@ -10,7 +10,7 @@ just like me, follow me.
 
 ## sway-preview
 
-![sway_preview](screenshot/swaypreview.png)
+![sway_preview](screenshot/sway_preview.png)
 
 ## Pre-requirements
 
