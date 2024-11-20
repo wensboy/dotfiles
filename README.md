@@ -4,7 +4,13 @@ Welcome to my dotfiles, I hope this is helpful to you.
 If you want to have a unique working environment on your own Linux device, 
 just like me, follow me.
 
-![preview](screenshot/preview.png)
+## i3wm-preview
+
+![i3_preview](screenshot/preview.png)
+
+## sway-preview
+
+![sway_preview](screenshot/swaypreview.png)
 
 ## Pre-requirements
 
