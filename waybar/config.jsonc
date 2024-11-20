@@ -170,7 +170,8 @@
         "on-click": "alacritty -e yay && notify-send 'The system has been updated' "
 	},
     "bluetooth": {
-	"format": " {status}",
+	"format-on": "  ",
+	"format-off": "  ",
 	"format-connected": " {device_alias}",
 	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
 	"tooltip-format": " {controller_alias}\t {controller_address}\n\n{num_connections}  ",
