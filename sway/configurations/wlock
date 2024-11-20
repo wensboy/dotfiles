@@ -10,14 +10,14 @@ indicator-radius=200
 indicator-thickness=20
 line-color=ffffff
 ring-color=b4f7f7
-inside-color=384646
+inside-color=38464600
 key-hl-color=F97721
 separator-color=00000000
 text-color=09FFE7
 text-caps-lock-color=""
 line-ver-color=ffffff
 ring-ver-color=b4f7f7
-inside-ver-color=1e1e2e
+inside-ver-color=1e1e2e00
 text-ver-color=ffff66
 ring-wrong-color=f38ba8
 text-wrong-color=f38ba8
@@ -30,6 +30,6 @@ line-wrong-color=11111b
 bs-hl-color=f38ba8
 grace=0
 grace-no-touch
-datestr=
+datestr=:) Hi~
 fade-in=0.3
 ignore-empty-password
