@@ -156,6 +156,7 @@
 	"menu-file": "$HOME/.config/waybar/power_menu.xml",
 	"menu-actions": {
 		"lock": "$HOME/.config/sway/scripts/lock.sh",
+		"logout": "swaymsg exit",
 		"poweroff": "poweroff",
 		"reboot": "reboot",
 		"suspend": "systemctl suspend",
