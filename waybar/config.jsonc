@@ -4,6 +4,7 @@
 	"modules-left": ["custom/launcher",
 	    "cpu",
 	    "memory",
+	    "user",
 	    "custom/media",
 	    "custom/notification",
 	    "tray"],
@@ -198,5 +199,13 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
+	},
+    "user": {
+	"format": "  {work_H} h {work_M} min",
+        "interval": 60,
+        "height": 30,
+        "width": 30,
+        "icon": true,
+	"open-on-click": true
 	}
 }
