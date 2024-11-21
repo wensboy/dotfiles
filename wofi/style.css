@@ -1,38 +1,61 @@
 window {
-margin: 0px;
-border: 1px solid #bd93f9;
-background-color: #282a36;
+margin: 5px;
+background: linear-gradient(to right, #ccff99, #99ffcc);
+border-radius: 16px;
 }
 
 #input {
 margin: 5px;
-border: none;
+border: 2px solid #99ff99;
 color: #f8f8f2;
 background-color: #44475a;
 }
 
 #inner-box {
 margin: 5px;
-border: none;
-background-color: #282a36;
+border: 2px solid #ccffcc;
+border-radius: 12px;
+background-color: #404040;
 }
 
 #outer-box {
-margin: 5px;
-border: none;
-background-color: #282a36;
+margin: 3px;
+border-radius: 13px;
+background-color: #404040;
 }
 
 #scroll {
 margin: 0px;
 border: none;
+color: #ffcc99;
 }
 
 #text {
 margin: 5px;
 border: none;
-color: #f8f8f2;
+background: linear-gradient(135deg,
+                    #0eaf6d,
+                    #ff6ac6 25%,
+                    #147b96 50%,
+                    #e6d205 55%,
+                    #2cc4e0 60%,
+                    #8b2ce0 80%,
+                    #ff6384 95%,
+                    #08dfb4);
+background-clip: text;
+background-size: 200% 100%;
+animation: flowCss 12s infinite linear;
 } 
+
+@keyframes flowCss {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: -400% 0;
+            }
+ }
 
 #entry.activatable #text {
 color: #282a36;
