@@ -8,7 +8,7 @@
 	    "custom/media",
 	    "custom/notification",
 	    "tray"],
-	"modules-center": ["sway/workspaces"],
+	"modules-center": ["hyprland/workspaces"],
 	"modules-right": ["custom/updates",
 	    "network",
 	    "backlight",
@@ -29,6 +29,22 @@
 	    "default": " "
 	    }
 	},
+    "hyprland/workspaces": {
+	    "format": "{icon}",
+	    "format-icons": {
+		"1": "",
+		"2": "",
+		"3": "",
+		"4": "",
+		"5": "",
+		"6": "",
+		"active": "",
+		"default": "" 
+	    },
+	    "persistent-workspaces": {
+	    "*": [ 2, 3]
+	    }
+	    },
     "pulseaudio": {
 		"tooltip": false,
 		"scroll-step": 2,
