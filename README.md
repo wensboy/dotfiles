@@ -12,6 +12,10 @@ just like me, follow me.
 
 ![sway_preview](screenshot/sway_preview.png)
 
+## hyprland-preview
+
+![hyprland_preview](screenshot/hypr_preview.png)
+
 ## Pre-requirements
 
 + Learn about the mechanics of symbolic linking
