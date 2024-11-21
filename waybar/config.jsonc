@@ -8,7 +8,9 @@
 	    "custom/media",
 	    "custom/notification",
 	    "tray"],
-	"modules-center": ["hyprland/workspaces"],
+	"modules-center": ["sway/workspaces",
+	    "hyprland/workspaces"
+	],
 	"modules-right": ["custom/updates",
 	    "network",
 	    "backlight",
