@@ -1,1 +1,8 @@
- 
+show=drun
+mode=run,drun
+width=25%
+height=50%
+hide_scrooll=true
+location=center
+
+
