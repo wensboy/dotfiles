@@ -5,9 +5,10 @@
 	    "cpu",
 	    "memory",
 	    "user",
-	    "custom/media",
 	    "custom/notification",
-	    "tray"],
+	    "tray",
+	    "custom/media"
+	],
 	"modules-center": ["sway/workspaces",
 	    "hyprland/workspaces"
 	],
@@ -159,7 +160,7 @@
             "default": " "
         },
         "escape": true,
-        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null",
         "on-click": "playerctl play-pause"
 	},
     "custom/launcher":{
@@ -174,7 +175,7 @@
 	"menu-file": "$HOME/.config/waybar/power_menu.xml",
 	"menu-actions": {
 		"lock": "$HOME/.config/sway/scripts/lock.sh",
-		"logout": "$HOME/.config/waybar/power_menu_logout.sh",
+		"logout": "$HOME/.config/waybar/scripts/power_menu_logout.sh",
 		"poweroff": "poweroff",
 		"reboot": "reboot",
 		"suspend": "systemctl suspend",
