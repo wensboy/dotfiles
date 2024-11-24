@@ -164,7 +164,7 @@
         "on-click": "playerctl play-pause"
 	},
     "custom/launcher":{
-        "format": " ",
+        "format": " ",
         "on-click": "wofi --show drun",
         "on-click-right": "killall rofi"
 	},
