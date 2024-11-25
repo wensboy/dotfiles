@@ -53,6 +53,9 @@ window#waybar.hidden {
     color: #ABE9B3;
     border-top: 2px solid #ABE9B3;
     border-bottom: 2px solid #ABE9B3;
+    border-left: 2px solid #abe9b3;
+    border-right: 2px solid #abe9b3;
+    box-shadow: 0px 0px 3px 1px #ABE9B3;
 }
 
 #workspaces button:hover {
