@@ -111,7 +111,7 @@
             ]
         },
         "format-full": " {capacity}%",
-	"format-alt": " {time}",
+	"format-alt": " {time}",
         "interval": 5,
         "states": {
             "warning": 20,
