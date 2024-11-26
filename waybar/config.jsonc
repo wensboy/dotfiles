@@ -77,7 +77,7 @@
         "on-scroll-up": "brightnessctl s +2%",
 	"on-scroll-down": "brightnessctl s 2%-"
 	},
-	"battery": {
+    "battery": {
         "states": {
             "good": 95,
             "warning": 30,
