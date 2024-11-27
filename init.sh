@@ -1,32 +1,46 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------------------------common
-#===> variable <====================#
+#===> variable 
 AUR='yay'
 CONFIG_DIR='$HOME/.config'
 
-#===> packages from arch pacman <====================#
+#===> packages from arch pacman 
 
 pacman_packages=()
 
-#===> packages from AUR(yay,paru...) <====================#
+#===> packages from AUR(yay,paru...) 
 
 aur_packages=()
 
-#===> make sure at $HOME dir currently <====================#
+#===> make sure at $HOME dir currently 
 
 cd $HOME
 
-#===> start install function <====================#
+#===> start install function 
 
 Start_install(){
     echo "[Start_install]===> $1"
 }
 
-#===> Complete install function <====================#
+#===> finish install function 
 
-Complete_install(){
-    echo "[Complete_install]===> $1"
+Finish_install(){
+    echo "[Finish_install]===> $1"
+}
+
+#===> Confirm install function
+Confirm_install(){
+    while true;do
+	read -p "[Confirm_install]===> $1? [y/n] " confirm_state
+	if [[ ${confirm_state} == "y" ]]; then
+		return 0
+	elif [[ ${confirm_state} == "n" ]]; then
+		return 1
+	else
+		echo "[Invalid]===> value: $confirm_state"	
+	fi
+    done
 }
 
 #------------------------------------------------------------------------------------common
@@ -91,10 +105,59 @@ Install_AUR(){
     git clone https://aur.archlinux.org/$AUR.git
     cd "$AUR"
     makepkg -si     
-    Complete_install "$AUR"
+    Finish_install "$AUR"
 }
 
 #------------------------------------------------------------------------------------install aur
 
+#------------------------------------------------------------------------------------select a wm
 
+#===> variable
 
+#===> lists of wm
+Window_Managers=(
+    "i3-wm"
+    "sway"
+    "hyprland"
+)
+
+Print_All_Window_Manager(){
+    count=1
+    echo "--------------------------------------------------"
+    for wm in ${Window_Managers[@]}
+    do
+	echo "[$count] $wm" 
+	(( count++ ))
+    done
+    echo "--------------------------------------------------"
+}
+
+Select_Window_Manager(){
+   Print_All_Window_Manager
+   while true;do
+   read -p "[Select_wm]===> [1-${#Window_Managers[@]}]  " selected_wm
+   if [[ -n ${selected_wm} ]]; then
+       if [[ ${selected_wm} -ge 1 && ${selected_wm} -le ${#Window_Managers[@]} ]];then
+	   selected_code=$(Confirm_install "${Window_Manager[$selected_wm]}") 
+	   case $selected_code in
+	       0)
+		    Start_install "${Window_Manager[$selected_wm]}"
+		    sudo pacman -S ${selected_wm} 
+		    Finish_install "${Window_Manager[$selected_wm]}"
+		    break
+		;;
+		
+	       1)
+		    echo "[Back]......"
+		;;
+	    esac	
+       else
+	   echo "[Invalid]===> value: ${selected_wm}"
+	fi
+    else
+	echo "[Invalid]===> value: ${selected_wm} required"
+   fi
+   done
+}
+
+#------------------------------------------------------------------------------------select a wm
