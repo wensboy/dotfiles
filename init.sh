@@ -5,14 +5,6 @@
 AUR='yay'
 CONFIG_DIR='$HOME/.config'
 
-#===> packages from arch pacman 
-
-pacman_packages=()
-
-#===> packages from AUR(yay,paru...) 
-
-aur_packages=()
-
 #===> make sure at $HOME dir currently 
 
 cd $HOME
@@ -41,6 +33,11 @@ Confirm_install(){
 		echo "[Invalid]===> value: $confirm_state"	
 	fi
     done
+}
+
+#===> Drop install function
+Drop_install(){
+    echo "[Drop_install]===> $1"
 }
 
 #------------------------------------------------------------------------------------common
@@ -110,6 +107,10 @@ Install_AUR(){
 
 #------------------------------------------------------------------------------------install aur
 
+
+
+
+
 #------------------------------------------------------------------------------------select a wm
 
 #===> variable
@@ -161,3 +162,81 @@ Select_Window_Manager(){
 }
 
 #------------------------------------------------------------------------------------select a wm
+
+
+
+#------------------------------------------------------------------------------------install all packages
+#===> variable
+AUR='yay'
+
+#===> packages from arch pacman 
+
+pacman_packages=(
+    "neovim"
+    "git"
+    "waybar"
+    #add your packages here
+)
+
+#===> packages from AUR(yay,paru...) 
+
+aur_packages=(
+    #add your packages here
+)
+
+#===> install packages
+
+Install_pacman_packages(){
+    for pac_package in ${pacman_packages[@]}
+    do
+	package_state=$(Confirm_install "${pac_package}")
+	case ${package_state} in
+	    0)
+		echo "---------------------------------------------"
+		Start_install ${pac_package}
+		sudo pacman -S ${pac_package}
+		Finish_install ${pac_package}
+		echo "---------------------------------------------"
+	    ;;
+	    
+	    1)
+		Drop_install ${pac_package}
+	    ;;
+	esac
+    done
+}
+
+
+Install_aur_packages(){
+    for aur_package in ${aur_packages[@]}
+    do
+	package_state=$(Confirm_install "${aur_package}")
+	case ${package_state} in
+	    0)
+		echo "---------------------------------------------"
+		Start_install ${aur_package}
+		$AUR -S ${aur_package}
+		Finish_install ${aur_package}
+		echo "---------------------------------------------"
+	    ;;
+	    
+	    1)
+		Drop_install ${aur_package}
+	    ;;
+	esac
+    done
+}
+
+#------------------------------------------------------------------------------------install all packages
+
+
+#------------------------------------------------------------------------------------link config
+
+
+
+
+
+
+
+
+#------------------------------------------------------------------------------------install all packages
