@@ -180,10 +180,11 @@ window#waybar.hidden {
 	padding-left: 10px;
 	margin-bottom: 0px;
 	padding-right: 10px;
+	border: 2px solid @color14;
 	border-radius: 10px;
 	transition: none;
 	color: #B5E8E0;
-	background: #161320;
+	background: rgba(53, 53, 53, 0.6);
 }
 
 #custom-launcher {
