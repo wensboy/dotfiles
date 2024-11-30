@@ -2,8 +2,7 @@
 	"layer": "top",
 	"reload_style_on_change": true,
 	"modules-left": ["custom/launcher",
-	    "cpu",
-	    "memory",
+	    "cpu", "memory",
 	    "user",
 	    "custom/notification",
 	    "tray",
@@ -206,7 +205,7 @@
 	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
 	"tooltip-format-enumerate-connected-battery": " {device_alias}\t {device_address}\t {device_battery_percentage}%",
 	"on-click": "bluetoothctl power on",
-	"on-click-middle": "blueman-manager",
+	"on-double-click": "blueman-manager",
 	"on-click-right": "bluetoothctl power off"
 	},
     "custom/notification": {
