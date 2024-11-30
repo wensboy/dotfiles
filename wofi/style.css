@@ -4,7 +4,7 @@ border: 2px solid transparent;
 border-radius: 16px;
 background-clip: padding-box, border-box;
 background-origin: padding-box, border-box;
-background-image: linear-gradient(to right, #222, #222), linear-gradient(45deg, #99ffcc, #ccff99);
+background-image: linear-gradient(to right, #222, #222), linear-gradient(45deg, #99ccff, #99ffff);
 }
 
 #input {
@@ -13,8 +13,8 @@ border: 2px solid transparent;
 border-radius: 13px;
 background-clip: padding-box, border-box;
 background-origin: padding-box, border-box;
-background-image: linear-gradient(to right, #232323, #232323), linear-gradient(45deg, #99ffcc, #ccff99);
-box-shadow: 0px 0px 9px 5px rgba(153,255,204,.8);
+background-image: linear-gradient(to right, #232323, #232323), linear-gradient(45deg, #99ccff, #99ffff);
+box-shadow: 0px 0px 9px 3px rgba(153,255,204,.8);
 }
 
 #inner-box {

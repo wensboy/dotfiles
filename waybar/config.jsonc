@@ -171,7 +171,7 @@
 	},
     "custom/launcher":{
         "format": " ",
-        "on-click": "wofi --show drun",
+        "on-click": "~/.config/rofi/launch.sh",
         "on-click-right": "killall rofi"
 	},
     "custom/power":{
