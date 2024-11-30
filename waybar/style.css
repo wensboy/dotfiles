@@ -22,7 +22,7 @@ window#waybar.hidden {
 	padding-right: 10px;
 	border-radius: 10px;
 	transition: none;
-    color: transparent;
+	color: transparent;
 	background: transparent;
 }
 #workspaces {
@@ -30,8 +30,9 @@ window#waybar.hidden {
 	margin-left: 12px;
 	font-size: 4px;
 	margin-bottom: 0px;
+	border: 2px solid #99ccff;
 	border-radius: 10px;
-	background: #161320;
+	background: rgba(53, 53, 53, 0.6);
 	transition: none;
 }
 
@@ -193,10 +194,11 @@ window#waybar.hidden {
 	margin-left: 8px;
 	padding-left: 10px;
 	padding-right: 3px;
+	border: 2px solid @color14;
 	border-radius: 10px;
 	transition: none;
         color: #00ffff;
-        background: #161320;
+        background: rgba(53, 53, 53, 0.6);
 }
 
 #custom-power {
