@@ -171,8 +171,8 @@
 	},
     "custom/launcher":{
         "format": " ",
-        "on-click": "~/.config/rofi/launch.sh",
-        "on-click-right": "killall rofi"
+        "on-click": "wofi --show run",
+        "on-click-right": "killall wofi"
 	},
     "custom/power":{
         "format": " ",
