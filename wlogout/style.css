@@ -32,7 +32,7 @@ button:focus, button:active {
 
 button:hover {
     border: 2px solid #99ccff;
-    box-shadow: 3px 4px 2px 2px rgba(204, 255, 255, 0.5);
+    box-shadow: 5px 5px 2px 2px rgba(204, 255, 255, 0.5);
 }
 
 #lock {
