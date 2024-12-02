@@ -8,7 +8,7 @@ window {
 }
 
 button {
-    margin: 80px;
+    margin: 90px;
     border-radius: 16px;
     border-color: #99ccff;
 	text-decoration-color: #99ccff;
@@ -21,7 +21,7 @@ button {
 	background-size: 10%;
 }
 
-button:focus, button:active, button:hover {
+button:focus, button:active {
 	background-color: rgba(67, 191, 242, 0.4);
 	box-shadow: 0px 0px 5px 2px rgba(204, 255, 255, 0.8);
 	color: rgba(255, 255, 255, 0.9);
@@ -31,7 +31,8 @@ button:focus, button:active, button:hover {
 }
 
 button:hover {
-    box-shadow: 3px 4px 2px 2px rgba(204, 255, 255, 0.4);
+    border: 2px solid #99ccff;
+    box-shadow: 3px 4px 2px 2px rgba(204, 255, 255, 0.5);
 }
 
 #lock {
