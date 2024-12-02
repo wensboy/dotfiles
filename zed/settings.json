@@ -10,7 +10,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "Colorizer"
   },
   "inactive_opacity": 0.75,
   "auto_install_extensions": {
