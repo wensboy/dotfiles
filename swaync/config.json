@@ -60,10 +60,6 @@
           "command": "hyprlock"
         },
         {
-          "label": "󰍃",
-          "command": "swaymsg exit"
-        },
-        {
           "label": "󰆴",
           "command": "swaync-client -C"
         },
@@ -78,18 +74,10 @@
           "type": "toggle"
         },
         {
-          "label": "󰖩",
-          "command": "iwgtk"
-        },
-        {
           "label": "󰂯",
           "command": "blueman-manager"
-        },
-        {
-          "label": "",
-          "command": "kooha"
         }
-      ]
+     ]
     }
   }
 }
