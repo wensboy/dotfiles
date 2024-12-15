@@ -1,8 +1,8 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
-  "positionX": "right",
+  "positionX": "center",
   "positionY": "top",
-  "control-center-margin-top": 10,
+  "control-center-margin-top": 5,
   "control-center-margin-bottom": 10,
   "control-center-margin-right": 5,
   "notification-icon-size": 64,
@@ -14,14 +14,14 @@
   "fit-to-screen": false,
   "control-center-width": 500,
   "control-center-height": 900,
-  "notification-window-width": 500,
+  "notification-window-width": 450,
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
   "transition-time": 200,
   "hide-on-clear": false,
   "hide-on-action": true,
   "script-fail-notify": true,
-  "widgets": ["buttons-grid", "volume", "backlight"],
+  "widgets": ["buttons-grid", "dnd", "volume", "backlight", "mpris"],
   "widget-config": {
     "title": {
       "text": "Notification Center",
@@ -43,38 +43,28 @@
       "label": "󰕾"
     },
     "backlight": {
-      "label": "󰃟"
+      "label": "󰃟",
+      "subsystem": "backlight",
+      "device": "amdgpu_bl1"
     },
     "buttons-grid": {
       "actions": [
         {
-          "label": "󰐥",
-          "command": "systemctl poweroff"
-        },
-        {
-          "label": "󰜉",
-          "command": "systemctl reboot"
-        },
-        {
-          "label": "󰌾",
-          "command": "hyprlock"
-        },
-        {
-          "label": "󰆴",
+          "label": "",
           "command": "swaync-client -C"
         },
         {
-          "label": "󰕾",
+          "label": "",
           "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
           "type": "toggle"
         },
         {
-          "label": "󰍬",
+          "label": "",
           "command": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
           "type": "toggle"
         },
         {
-          "label": "󰂯",
+          "label": "",
           "command": "blueman-manager"
         }
      ]
