@@ -276,29 +276,37 @@
 .widget-buttons-grid {
   font-size: x-large;
   padding: 0px;
-  margin: 10px 10px 5px 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   border-radius: 8px;
   background: transparent;
   border: 1px solid #99ccff;
 }
 
+.widget-buttons-grid > flowbox > flowboxchild {
+    border-radius: 16px;
+    margin: 0px 5px 0px 45px;
+    background: transparent;
+}
+
 .widget-buttons-grid > flowbox > flowboxchild > button {
-  margin: 3px 5px 3px 5px;
+  margin: 3px 3px 3px 3px;
   background: transparent;
   border: 1px solid #99ccff;
-  border-radius: 9px;
+  border-radius: 16px;
   color: @text-color;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
     box-shadow: 0px 0px 3px 2px #99ccff;
+    border-radius: 16px;
     background: transparent;
     color: #99ccff;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:checked {
   border: 1px solid rgba(244, 95, 88, .75);
-  border-radius: 9px;
+  border-radius: 16px;
   background: transparent;
   color: rgba(244, 95, 88, 0.75);
 }
