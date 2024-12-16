@@ -61,6 +61,7 @@
   border: none;
 }
 
+/*
 .notification-action {
   border: 2px solid #34548a;
   border-top: none;
@@ -92,6 +93,7 @@
   border-bottom-right-radius: 10px;
   background: #1b1b2b;
 }
+*/
 
 .inline-reply {
   margin-top: 8px;
@@ -100,7 +102,6 @@
 .inline-reply-entry {
   background: @noti-bg-darker;
   color: @text-color;
-  caret-color: @text-color;
   border: 1px solid @noti-border-color;
   border-radius: 5px;
 }
@@ -172,9 +173,10 @@
 }
 
 .blank-window {
-  background: alpha(black, 0.1);
+  background: transparent;
 }
 
+/*
 .widget-title {
   color: #7aa2f7;
   background: @noti-bg-darker;
@@ -197,6 +199,7 @@
   background: #f7768e;
   color: @cc-bg;
 }
+*/
 
 .widget-dnd {
   background: transparent;
@@ -231,6 +234,7 @@
   border-radius: 11px;
 }
 
+/*
 .widget-label {
   margin: 10px 10px 5px 10px;
 }
@@ -239,6 +243,7 @@
   font-size: 1rem;
   color: @text-color;
 }
+*/
 
 .widget-mpris {
   color: @text-color;
@@ -278,13 +283,13 @@
   padding: 0px;
   margin-top: 10px;
   margin-bottom: 5px;
-  border-radius: 8px;
+  border-radius: 16px;
   background: transparent;
   border: 1px solid #99ccff;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild {
-    border-radius: 16px;
+    border-radius: 3px;
     margin: 0px 5px 0px 45px;
     background: transparent;
 }
@@ -293,13 +298,13 @@
   margin: 3px 3px 3px 3px;
   background: transparent;
   border: 1px solid #99ccff;
-  border-radius: 16px;
+  border-radius: 3px;
   color: @text-color;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
     box-shadow: 0px 0px 3px 2px #99ccff;
-    border-radius: 16px;
+    border-radius: 3px;
     background: transparent;
     color: #99ccff;
 }
@@ -313,8 +318,10 @@
 
 .widget-buttons-grid > flowbox > flowboxchild > button:checked:hover {
   box-shadow: 0px 0px 3px 2px rgba(244, 95, 88, 0.75);
+  border-radius: 16px;
 }
     
+/*
 .widget-menubar > box > .menu-button-bar > button {
   border: none;
   background: transparent;
@@ -322,8 +329,9 @@
 
 .topbar-buttons > button {
   border: none;
-  background: transparent;
+  background: #fff;
 }
+*/
 
 .widget-volume {
   background: transparent;
