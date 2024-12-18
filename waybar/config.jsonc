@@ -4,7 +4,7 @@
 	"modules-left": ["custom/launcher",
 	    "cpu", "memory",
 	    "user",
-	    "custom/notification",
+	    "clock",
 	    "tray",
 	    "custom/media"
 	],
@@ -16,7 +16,7 @@
 	    "backlight",
 	    "bluetooth",
 	    "pulseaudio",
-	    "clock",
+	    "custom/notification",
 	    "battery",
 	    "custom/power"],
     "sway/workspaces": {
