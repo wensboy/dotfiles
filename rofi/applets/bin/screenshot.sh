@@ -82,14 +82,17 @@ copy_shot () {
 # notify and view screenshot
 notify_view() {
 	notify_cmd_shot='dunstify -u low --replace=699'
-	confirm=$(confirm_exit)
-	if [[ -e "$dir/$file" && -n ${confirm} ]]; then
+	if [[ -e "$dir/$file" ]]; then
+	    confirm=$(confirm_exit)
 	    if [[ $confirm == "${save}" ]]; then
 		viewnior ${dir}/"$file"
 		${notify_cmd_shot} "Screenshot Saved."
-	    else
+	    elif [[ $confirm == "$copy" ]]; then
 		copy_shot		
 		${notify_cmd_shot} "Copied Into Clipboard."
+	    else
+		rm -f $dir/$file
+		${notify_cmd_shot} "Screenshot Deleted."
 	    fi
 	else
 		${notify_cmd_shot} "Screenshot Deleted."
