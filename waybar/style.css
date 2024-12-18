@@ -201,6 +201,20 @@ window#waybar.hidden {
         background: rgba(53, 53, 53, 0.6);
 }
 
+#custom-screenshot {
+	font-size: 24px;
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 8px;
+	padding-right: 3px;
+	border: 2px solid @color15;
+	border-radius: 10px;
+	transition: none;
+        color: @color15;
+        background: rgba(53, 53, 53, 0.6);
+}
+
+
 #custom-power {
 	font-size: 20px;
 	margin-top: 6px;

@@ -1,17 +1,20 @@
 {
 	"layer": "top",
 	"reload_style_on_change": true,
-	"modules-left": ["custom/launcher",
+	"modules-left": [
+	    "custom/screenshot",
 	    "cpu", "memory",
 	    "user",
 	    "clock",
 	    "tray",
 	    "custom/media"
 	],
-	"modules-center": ["sway/workspaces",
+	"modules-center": [
+	    "sway/workspaces",
 	    "hyprland/workspaces"
 	],
-	"modules-right": ["custom/updates",
+	"modules-right": [
+	    "custom/updates",
 	    "network",
 	    "backlight",
 	    "bluetooth",
@@ -174,6 +177,11 @@
         "on-click": "wofi --show run",
         "on-click-right": "killall wofi"
 	},
+    "custom/screenshot":{
+	"format": " ",
+	"on-click": "$HOME/.config/rofi/applets/bin/screenshot.sh",
+	"on-click-right": "killall $(pidof rofi)"
+    },
     "custom/power":{
         "format": " ",
 	"tooltip": false,
