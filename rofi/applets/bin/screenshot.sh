@@ -44,6 +44,8 @@ run_rofi() {
 }
 
 # Screenshot
+save=" "
+copy=" "
 time=$(date +%s)
 geometry=`xrandr | grep 'current' | head -n1 | cut -d',' -f2 | tr -d '[:blank:],current'`
 dir="$(xdg-user-dir PICTURES)/Screenshots"
@@ -53,21 +55,45 @@ if [[ ! -d "$dir" ]]; then
 	mkdir -p "$dir"
 fi
 
-# notify and view screenshot
-notify_view() {
-	notify_cmd_shot='dunstify -u low --replace=699'
-	#${notify_cmd_shot} "Copied to clipboard."
-	if [[ -e "$dir/$file" ]]; then
-		viewnior ${dir}/"$file"
-		${notify_cmd_shot} "Screenshot Saved."
-	else
-		${notify_cmd_shot} "Screenshot Deleted."
-	fi
+# Confirmation CMD
+confirm_cmd() {
+	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
+		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
+		-theme-str 'listview {columns: 2; lines: 1;}' \
+		-theme-str 'element-text {horizontal-align: 0.5;}' \
+		-theme-str 'textbox {horizontal-align: 0.5;}' \
+		-dmenu \
+		-p 'Confirmation' \
+		-mesg 'How to deal?' \
+		-theme ${theme}
+}
+
+# Ask for confirmation
+confirm_exit() {
+	echo -e "$save\n$copy" | confirm_cmd
 }
 
 # Copy screenshot to clipboard
 copy_shot () {
-	tee "$file" | xclip -selection clipboard -t image/png
+    wl-copy < ${dir}/${file}
+    rm -f ${dir}/${file}
+}
+
+# notify and view screenshot
+notify_view() {
+	notify_cmd_shot='dunstify -u low --replace=699'
+	confirm=$(confirm_exit)
+	if [[ -e "$dir/$file" && -n ${confirm} ]]; then
+	    if [[ $confirm == "${save}" ]]; then
+		viewnior ${dir}/"$file"
+		${notify_cmd_shot} "Screenshot Saved."
+	    else
+		copy_shot		
+		${notify_cmd_shot} "Copied Into Clipboard."
+	    fi
+	else
+		${notify_cmd_shot} "Screenshot Deleted."
+	fi
 }
 
 # countdown
@@ -80,7 +106,7 @@ countdown () {
 
 # take shots
 # TODO: I just think that if i can choose how to deal with the shot here?
-# like: save [or] copy in clipboard
+# like: save [or] copy in clipboard [have been fixed!!!]
 # maybe rofi to achieve...
 shotnow () {
     cd ${dir} && sleep 0.5 && grim -t png ${file}

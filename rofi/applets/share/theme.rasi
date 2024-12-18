@@ -3,9 +3,12 @@ configuration {
     show-icons:                 false;
 }
 
+@import "~/.config/rofi/applets/share/font.rasi"
+@import "~/.cache/wal/colors-rofi.rasi"
+
 /*****----- Global Properties -----*****/
+/*
 * {
-    font:                        "JetBrains Mono Nerd Font 10";
     background:                  #2D1B14;
     background-alt:              #462D23;
     foreground:                  #FFFFFF;
@@ -13,6 +16,7 @@ configuration {
     active:                      #716251;
     urgent:                      #934A1C;
 }
+*/
 
 /*
 USE_ICON=YES
@@ -33,7 +37,7 @@ window {
     border-radius:               20px;
     border-color:                @selected;
     cursor:                      "default";
-    background-color:            @background;
+    background-color:            rgba(128, 133, 138, 0.25);
 }
 
 /*****----- Main Box -----*****/
