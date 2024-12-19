@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-killall -q wlogout
+kill $(pidof wlogout)
 
-wlogout
+wlogout -b 6
