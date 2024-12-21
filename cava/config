@@ -1,14 +1,12 @@
 ## Configuration file for CAVA.
-# Remove the ; to change parameters.
-
 
 [general]
 
 # Smoothing mode. Can be 'normal', 'scientific' or 'waves'. DEPRECATED as of 0.6.0
-; mode = normal
+mode = waves
 
 # Accepts only non-negative values.
-; framerate = 60
+framerate = 90
 
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
 # new as of 0.6.0 autosens of low values (dynamic range)
