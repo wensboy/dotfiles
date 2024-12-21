@@ -16,14 +16,16 @@ cur=$(date +%H)
 
 case $cur in
 	00 | 01 | 02 | 03 | 04 | 05 | 06 | 07) 
-    	        swww img $morning_wp $opts
+		cur_wp=${morning_wp}
 		;;
 	08 | 09 | 10 | 11 | 12 | 13 | 14 | 15) 
-		swww img $afternoon_wp $opts
+		cur_wp=${afternoon_wp}
 		;;
 	16 | 17 | 18 | 19 | 20 | 21 | 22 | 23) 
-		swww img $dawn_wp $opts
+		cur_wp=${dawn_wp}
 		;;
 esac
 
+swww img ${cur_wp} $opts
+wal -i ${cur_wp} > /dev/null
 
