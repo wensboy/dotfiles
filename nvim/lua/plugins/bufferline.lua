@@ -9,7 +9,7 @@ return {
 		require("bufferline").setup({
 			options = {
 				mode = "buffers",
-				separator_style = "thick",
+				separator_style = 'thin',
 				show_buffer_icons = true,
 				color_icons = true,
 				show_buffer_close_icons = true,

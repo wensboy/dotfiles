@@ -6,7 +6,8 @@ return {
 		'nvim-tree/nvim-web-devicons',
 	},
 	config = function()
-		vim.api.nvim_set_keymap("n","<C-h>",":NvimTreeToggle<cr>",{silent = true, noremap = true})
+		vim.keymap.set('n', '<C-h>', ':NvimTreeToggle<cr>', { silent = true, noremap = true} )
+		vim.keymap.set('n', '<leader>hf', ':NvimTreeFocus<cr>', { silent = true} )
 		require("nvim-tree").setup({})
 	end,
 
