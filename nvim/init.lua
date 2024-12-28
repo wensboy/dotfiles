@@ -4,4 +4,6 @@ require("config.lazy")
 -- load colorscheme
 require("config.colorscheme")
 
+-- load options
+require("config.options")
 
