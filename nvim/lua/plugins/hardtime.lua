@@ -3,14 +3,17 @@ return {
 	dependencies = { "MunifTanjim/nui.nvim" },
 	opts = {},
 	config = function()
-		vim.notify = require("notify")
 		local is_enabled = false
 		local toggle_with_notification = function()
 			vim.cmd("Hardtime toggle")
 			if is_enabled then
-				vim.notify("Hardtime is enabled!")
+				vim.notify("Hardtime is enabled!", 2, {
+					title = "Hardtime"
+				})
 			else
-				vim.notify("Hardtime is disabled!")
+				vim.notify("Hardtime is disabled!", 2, {
+					title = "Hardtime"
+				})
 				is_enabled = true
 			end
 		end
