@@ -7,3 +7,5 @@ require("config.colorscheme")
 -- load options
 require("config.options")
 
+-- load keybindings
+require("config.keybindings")
