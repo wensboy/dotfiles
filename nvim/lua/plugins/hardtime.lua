@@ -22,6 +22,7 @@ return {
 				"NvimTree",
 				"lazy",
 				"mason",
+				"dashboard",
 			}
 		}
 		vim.keymap.set('n', '<leader>ht', toggle_with_notification, { silent = true })

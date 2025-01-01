@@ -30,7 +30,7 @@ return {
 						desc = '      Find               ',
 						key = 'f',
 						keymap = 'SPC k f ',
-						key_format = '󰞘 %s',
+						key_format = '  [%s]',
 						action = 'lua require("telescope.builtin").find_files()'
 					},
 					{
@@ -38,7 +38,7 @@ return {
 						desc = '      Recent              ',
 						key = 'r',
 						keymap = 'SPC k r ',
-						key_format = '󰞘 %s',
+						key_format = '  [%s]',
 						action = 'lua require("telescope.builtin").oldfiles()',
 					},
 					{
@@ -46,15 +46,15 @@ return {
 						desc = '      Lazy               ',
 						key = 'l',
 						keymap = 'SPC k l ',
-						key_format = '󰞘 %s',
+						key_format = '  [%s]',
 						action = ':Lazy'
 					},
 					{
 						icon = '󰰑 ',
-						desc = '      Mason               ',
+						desc = '      Mason              ',
 						key = 'm',
 						keymap = 'SPC k m ',
-						key_format = '󰞘 %s',
+						key_format = '  [%s]',
 						action = ':Mason'
 					},
 					{
@@ -62,7 +62,7 @@ return {
 						desc = '      Exit               ',
 						key = 'e',
 						keymap = 'SPC k e ',
-						key_format = '󰞘 %s',
+						key_format = '  [%s]',
 						action = ':q'
 					}
 				},
