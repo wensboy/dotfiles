@@ -10,12 +10,20 @@ return {
 		require("transparent").setup({
 			extra_groups = {
 				"NormalFloat",
+				"FloatBorder",
 				"NvimTreeNormal",
 				"CmpPmenu",
 				"CmpPmenuBorder",
 				"CmpPmenuSel",
 				"CmpPmenuThumb",
-				"FloatBorder",
+				"TelescopeNormal",
+				"TelescopeBorder",
+				"TelescopePromptNormal",
+				"TelescopePromptBorder",
+				"TelescopePromptTitle",
+				"BufferLineBackground",
+				"BufferLineFill",
+				"BufferLineSeparator",
 			}
 		})
 	end

@@ -158,7 +158,7 @@
 	},
     "memory": {
         "interval": 30,
-        "format": " {}%",
+        "format": "  {}%",
         "max-length": 10
 	},
     "custom/media": {
@@ -180,7 +180,7 @@
         "on-click-right": "killall wofi"
 	},
     "custom/screenshot":{
-	"format": " ",
+	"format": "󰄄 ",
 	"on-click": "$HOME/.config/rofi/applets/bin/screenshot.sh",
 	"on-click-right": "killall $(pidof rofi)"
     },
@@ -199,7 +199,7 @@
 	}
 	},
     "custom/updates":{
-        "format": "  {}",
+        "format": "󰏕  {}",
         "exec": "checkupdates | wc -l",
         "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
         "interval": 15,
@@ -240,7 +240,7 @@
 	 "escape": true
 	},
     "user": {
-	"format": "  {work_H} h {work_M} min",
+	"format": "󰹑  {work_H} h {work_M} min",
         "interval": 60,
         "height": 30,
         "width": 30,
