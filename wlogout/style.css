@@ -8,36 +8,38 @@ window {
 }
 
 button {
-    margin: 240px 8px;
-    border-radius: 16px;
-    border-bottom: 2px solid #99ccff;
-    color: rgba(12, 12, 12, 0.1);
-    background-color: rgba(12, 12, 12, 0.1);
-    background-repeat: no-repeat;
+    color: #FFFFFF;
+    background-color: @color1;
     background-position: center;
-    background-size: 10%;
-}
-
-button:focus, button:active {
-    box-shadow: 8px 6px 5px 3px rgba(204, 255, 255, 0.8);
-    color: rgba(255, 255, 255, 0.9);
-    border-left: 1px solid rgba(204, 255, 255, 0.8);
-    border-top: 1px solid rgba(204, 255, 255, 0.8);
-    border-radius: 16px;
-    text-shadow: 2px 2px 2px #99ffff;
+    background-repeat: no-repeat;
+    background-size: 20%;
+    border: none;
+    border-radius: 10px;
     outline-style: none;
-    font-size: 20px;
 }
 
 button:hover {
-    box-shadow: 8px 6px 5px 3px rgba(204, 255, 255, 0.8);
-    color: rgba(255, 255, 255, 0.9);
-    border-left: 1px solid rgba(204, 255, 255, 0.8);
-    border-top: 1px solid rgba(204, 255, 255, 0.8);
-    border-radius: 16px;
-    text-shadow: 2px 2px 2px #99ffff;
-    outline-style: none;
-    font-size: 20px;
+    background-size: 25%;
+}
+
+button:hover#lock {
+    border-radius: 10px 10px 0px 10px;
+    margin : 80px 0px 0px 530px;
+}
+
+button:hover#reboot {
+    border-radius: 10px 0px 10px 10px;
+    margin : 0px 0px 80px 530px;
+}
+
+button:hover#logout {
+    border-radius: 10px 10px 10px 0px;
+    margin : 80px 530px 0px 0px;
+}
+
+button:hover#shutdown {
+    border-radius: 0px 10px 10px 10px;
+    margin: 0px 530px 80px 0px;
 }
 
 #lock {
@@ -60,25 +62,6 @@ button:hover {
     background-size: 100px 100px;
 }
 
-#suspend {
-    background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
-    background-size: 50px 50px;
-}
-
-#suspend:focus {
-    background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
-    background-size: 100px 100px;
-}
-
-#hibernate {
-    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
-    background-size: 50px 50px;
-}
-
-#hibernate:focus {
-    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
-    background-size: 100px 100px;
-}
 
 #shutdown {
     background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
