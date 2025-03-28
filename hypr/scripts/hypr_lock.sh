@@ -2,4 +2,4 @@
 
 kill $(pidof wlogout)
 
-wlogout -b 6
+wlogout -b 4
