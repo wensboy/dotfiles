@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 
-morning_wp=~/Pictures/wallpapers/yuanshan01.png
-afternoon_wp=~/Pictures/wallpapers/bluebeach.png
-dawn_wp=~/Pictures/wallpapers/cloud.png
+morning_wp="$HOME/github/dotfiles/hypr/wallpapers/sky.png"
+afternoon_wp="$HOME/github/dotfiles/hypr/wallpapers/bluebeach.png"
+dawn_wp="$HOME/github/dotfiles/hypr/wallpapers/cloud.png"
 
 opts="--transition-type random --transition-fps 90 --transition-step 5"
 
