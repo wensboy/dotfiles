@@ -1,0 +1,12 @@
+/**
+ *
+ * Author : wensboy
+ * Github : @wensboy
+ *
+ * Font
+ *
+ **/
+
+* {
+    font: "Maple Mono NF 10";
+}

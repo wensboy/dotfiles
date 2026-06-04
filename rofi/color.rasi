@@ -1,0 +1,11 @@
+/**
+ *
+ * Author : wensboy
+ * Github : @wensboy
+ *
+ * Color
+ **/
+
+/* Import color-scheme from `colors` directory */
+
+@import "~/.config/rofi/colors/gruvbox.rasi"
