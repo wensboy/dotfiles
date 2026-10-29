@@ -1,0 +1,94 @@
+.popup-menu-boxpointer.kimpanel-popup-boxpointer {
+  /* you may customize pointer box here */
+}
+
+.popup-menu-content.kimpanel-popup-content {
+  /* you may customize pointer box here */
+  /* padding: 6px; */
+}
+
+.kimpanel-label {
+  font-family:sans;
+  font-weight:normal;
+  padding: 0.4em;
+}
+
+.kimpanel-candidate-item {
+  cursor: pointer;
+  transition-duration: 0ms;
+}
+
+.kimpanel-candidate-item:hover {
+  /* border-radius: 14px; */
+  /* background-color: rgba(200,200,200,0.33); */
+}
+
+.kimpanel-candidate-item:active {
+  /* border-radius: 14px; */
+  /* background-color: rgba(200,200,200,0.33); */
+}
+
+.kimpanel-candidate-item:active:hover {
+  /* border-radius: 14px; */
+  /* background-color: rgba(200,200,200,0.15); */
+}
+
+.minwidth-zero {
+  min-width: 0;
+}
+
+.icon-disable {
+  color:rgba(150,150,150,0.5);
+}
+
+/* ======================================================= */
+/*               Tokyo Night Theme Override                */
+/* ======================================================= */
+
+.popup-menu-boxpointer.kimpanel-popup-boxpointer {
+  -arrow-background-color: transparent;
+  -arrow-border-color: transparent;
+  -arrow-border-width: 0px;
+}
+
+.popup-menu-content.kimpanel-popup-content {
+  background-color: rgba(26, 27, 38, 0.85);
+  /* 如果系统支持 backdrop-filter，开启毛玻璃模糊效果 */
+  backdrop-filter: blur(10px); 
+  border: 1px solid rgba(41, 46, 66, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  padding: 6px;
+}
+
+.kimpanel-candidate-item {
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: #c0caf5;
+  /* 让非高亮项的背景透明，融入主背景 */
+  background-color: transparent; 
+  transition-duration: 100ms;
+}
+
+.kimpanel-candidate-item:active,
+.kimpanel-candidate-item:hover {
+  background-color: rgba(122, 162, 247, 0.25);
+  color: #e0af68;
+  /* 选中时加粗，更醒目 */
+  font-weight: bold; 
+}
+
+.kimpanel-candidate-label {
+  color: #565f89;
+  margin-right: 8px;
+}
+.kimpanel-candidate-item:active .kimpanel-candidate-label,
+.kimpanel-candidate-item:hover .kimpanel-candidate-label {
+  color: #7aa2f7;
+}
+
+.kimpanel-auxiliary-text {
+  color: #a9b1d6;
+  font-size: 0.9em;
+  padding: 2px 8px;
+}
