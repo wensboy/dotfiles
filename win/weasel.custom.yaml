@@ -1,0 +1,164 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.17.4
+  generator: "Weasel::UIStyleSettings"
+  modified_time: "Sun Apr 19 10:44:25 2026"
+  rime_version: 1.13.1
+patch:
+  "menu/page_size": 4
+  "style/color_scheme": kanagawa-dark
+  "style/preedit_type": composition
+  "style/inline_preedit": false
+  "style/display_tray_icon": true
+  "speller/use_space": true
+  
+  "style/font_point": 10            # 候选文字字号（默认 12）
+  "style/label_font_point": 9       # 序号字号
+  "style/comment_font_point": 9     # 注释/拼音字号
+  
+  # 间距控制
+  "style/min_width": 10             # 最小宽度
+  "style/min_height": 0             # 最小高度（0 为自动）
+  "style/border_width": 1           # 边框粗细
+  "style/margin_x": 6               # 左右边距
+  "style/margin_y": 4               # 上下边距（关键：减小此项压缩高度）
+  "style/spacing": 5                # 候选项之间的间距
+  "style/candidate_spacing": 8      # 候选词之间的水平间距
+  
+  # 行距（竖排时有效）
+  "style/hilite_spacing": 2         # 高亮项与边框的间距
+  "style/hilite_padding": 4         # 高亮项内边距
+  
+
+  # ==================== Gruvbox Dark ====================
+  "preset_color_schemes/gruvbox-dark":
+    name: "Gruvbox Dark"
+    author: "wendisx"
+    back_color: 0x282828
+    border_color: 0x3C3836
+    text_color: 0xEBDBB2
+    candidate_text_color: 0xEBDBB2
+    comment_text_color: 0x928374
+    label_color: 0x928374
+    hilited_candidate_back_color: 0x458588
+    hilited_candidate_text_color: 0xFBF1C7
+    hilited_comment_text_color: 0xB8BB26
+    hilited_text_color: 0xFBF1C7
+    hilited_back_color: 0x504945
+    candidate_label_color: 0x928374
+    next_page_color: 0xFE8019
+    prev_page_color: 0xFE8019
+
+  # ==================== Gruvbox Light ====================
+  "preset_color_schemes/gruvbox-light":
+    name: "Gruvbox Light"
+    author: "wendisx"
+    back_color: 0xFBF1C7
+    border_color: 0xEBDBB2
+    text_color: 0x3C3836
+    candidate_text_color: 0x3C3836
+    comment_text_color: 0x928374
+    label_color: 0x928374
+    hilited_candidate_back_color: 0x076678
+    hilited_candidate_text_color: 0x282828
+    hilited_comment_text_color: 0x79740E
+    hilited_text_color: 0x282828
+    hilited_back_color: 0xD5C4A1
+    candidate_label_color: 0x928374
+    next_page_color: 0xAF3A03
+    prev_page_color: 0xAF3A03
+    
+  # ==================== Tokyo-night Dark ====================
+  "preset_color_schemes/tokyo-night-dark":
+    author: wendisx
+    name: "Tokyo Night Dark"
+    color_format: rgba
+    back_color: 0x1A1B26D9
+    border_color: 0x7AA2F72B
+    shadow_color: 0x00000073
+    text_color: 0xC0CAF5
+    candidate_text_color: 0xC0CAF5
+    label_color: 0x7AA2F7
+    comment_text_color: 0x565F89
+    hilited_text_color: 0x7DCFFF
+    hilited_back_color: 0x283457B3
+    hilited_label_color: 0x7DCFFF
+    hilited_comment_text_color: 0x737AA2
+    hilited_candidate_text_color: 0xFF9E64
+    hilited_candidate_back_color: 0x33467CCC
+    
+  # ==================== Kanagawa Dark ====================
+  "preset_color_schemes/kanagawa-dark":
+    author: wendisx
+    name: "Kanagawa Dark"
+    color_format: rgba
+    back_color: 0x1F1F28D9
+    border_color: 0x7E9CD82B
+    shadow_color: 0x00000073
+    text_color: 0xDCD7BA
+    candidate_text_color: 0xDCD7BA
+    label_color: 0x7E9CD8
+    comment_text_color: 0x727169
+    hilited_text_color: 0x7E9CD8
+    hilited_back_color: 0x2D4F67B3
+    hilited_label_color: 0x7E9CD8
+    hilited_comment_text_color: 0x727169
+    hilited_candidate_text_color: 0xFFA066
+    hilited_candidate_back_color: 0x2D4F67CC
+    
+  # ==================== apple mist light sky ====================
+  "preset_color_schemes/apple-mist-light-sky":
+    author: yester-code
+    name: "Apple Mist Light Sky"
+    color_format: rgba
+    back_color: 0xF5F6F7D9
+    border_color: 0xFFFFFF66
+    shadow_color: 0x0000001C
+    text_color: 0x2F3338
+    candidate_text_color: 0x2F3338
+    label_color: 0xA2A9B1
+    comment_text_color: 0x8F98A2
+    hilited_text_color: 0x2B3035
+    hilited_back_color: 0xEDEFF299
+    hilited_label_color: 0x8294A7
+    hilited_comment_text_color: 0x77899A
+    hilited_candidate_text_color: 0x24303C
+    hilited_candidate_back_color: 0xDFE9F3CC
+    
+   # ==================== apple mist dark sky ====================
+  "preset_color_schemes/apple-mist-dark-sky":
+    author: yester-code
+    name: "Apple Mist Dark Sky"
+    color_format: rgba
+    back_color: 0x1E2227D9
+    border_color: 0xFFFFFF2B
+    shadow_color: 0x00000073
+    text_color: 0xE6EBF1
+    candidate_text_color: 0xE6EBF1
+    label_color: 0x8A929C
+    comment_text_color: 0x7A838E
+    hilited_text_color: 0xF2F6FB
+    hilited_back_color: 0x2A303799
+    hilited_label_color: 0x9BAFC3
+    hilited_comment_text_color: 0x8FA3B6
+    hilited_candidate_text_color: 0xEFF5FC
+    hilited_candidate_back_color: 0x334454CC
+    
+    # ==================== apple mist dark sky (Optimized Cyan) ====================
+  "preset_color_schemes/apple-mist-dark-cyan-sky":
+    author: wendisx
+    name: "Apple Mist Dark Cyan Sky"
+    color_format: rgba
+    back_color: 0x263138D9
+    border_color: 0xA3E4E82B
+    shadow_color: 0x00000073
+    text_color: 0xE3F0F2
+    candidate_text_color: 0xE3F0F2
+    label_color: 0x78A0A8
+    comment_text_color: 0x6A8A92
+    hilited_text_color: 0xF0F8FA
+    hilited_back_color: 0x335260B3
+    hilited_label_color: 0x8FB8C3
+    hilited_comment_text_color: 0x8AB6C0
+    hilited_candidate_text_color: 0xF0F8F9
+    hilited_candidate_back_color: 0x3B5966CC
