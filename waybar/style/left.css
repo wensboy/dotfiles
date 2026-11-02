@@ -1,0 +1,30 @@
+#workspaces button {
+  margin: 4px 2px;
+  padding: 0 6px;
+  color: @muted;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#workspaces button.active {
+  color: @foreground;
+  border-color: @foreground;
+  font-weight: 700;
+}
+
+#workspaces button.urgent {
+  color: @color15;
+  font-weight: 700;
+}
+
+#workspaces button:hover {
+  color: @foreground;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+#window {
+  color: @muted;
+}

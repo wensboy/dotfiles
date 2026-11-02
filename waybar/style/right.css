@@ -1,0 +1,28 @@
+#tray,
+#backlight,
+#network,
+#pulseaudio,
+#battery {
+  border-left: 1px solid @divider;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  color: @color15;
+}
+
+#battery.charging {
+  color: @foreground;
+}
+
+#battery.warning {
+  color: @color15;
+}
+
+#battery.critical {
+  color: @color15;
+  font-weight: 700;
+}

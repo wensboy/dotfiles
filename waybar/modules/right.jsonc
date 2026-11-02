@@ -1,0 +1,66 @@
+{
+  "tray": {
+    "spacing": 10,
+    "icons": {}
+  },
+  "backlight": {
+      "format": "{icon} {percent}%",
+      "format-icons": [      
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      // "on-scroll-up": "brightnessctl set 2%+",
+      // "on-scroll-down": "brightnessctl set 2%-",
+      "min-brightness": 4
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "  {essid}({signalStrength}%)",
+    "format-ethernet": "  {ifname}",
+    "format-disconnected": "",
+    "tooltip-format-wifi": "UP: {bandwidthUpBytes} DOWN: {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "UP: {bandwidthUpBytes} DOWN: {bandwidthDownBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "󰂑",
+      "headset": "󰂑",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
+    },
+    "scroll-step": 2,
+    "on-click": "pavucontrol"
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": {
+      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
+    },
+    "interval": 60,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  }
+}

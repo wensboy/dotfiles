@@ -1,0 +1,38 @@
+@define-color panel   alpha(@background, 0.70);
+@define-color border  alpha(@foreground, 0.12);
+@define-color divider alpha(@foreground, 0.30);
+@define-color muted   alpha(@foreground, 0.55);
+
+* {
+  font-family: "Maple Mono NF", "Font Awesome 7 Free", "Font Awesome 7 Brands", "FontAwesome";
+  font-size: 12px;
+  font-weight: 500;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+
+window#waybar {
+  background: @panel;
+  color: @foreground;
+}
+
+#workspaces,
+#window,
+#clock,
+#tray,
+#backlight,
+#network,
+#pulseaudio,
+#battery {
+  padding: 0 8px;
+  background: transparent;
+}
+
+tooltip {
+  background: @panel;
+  border: 1px solid @border;
+  border-radius: 0;
+}

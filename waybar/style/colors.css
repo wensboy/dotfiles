@@ -1,0 +1,21 @@
+/* pywal palette variables, replace this file with ~/.cache/wal/colors.css to follow the wallpaper */
+@define-color background  #000000;
+@define-color foreground  #dcdcdc;
+@define-color cursor      #dcdcdc;
+
+@define-color color0      #0d0d0d;
+@define-color color1      #1a1a1a;
+@define-color color2      #262626;
+@define-color color3      #333333;
+@define-color color4      #4d4d4d;
+@define-color color5      #666666;
+@define-color color6      #808080;
+@define-color color7      #999999;
+@define-color color8      #b3b3b3;
+@define-color color9      #c0c0c0;
+@define-color color10     #cccccc;
+@define-color color11     #d6d6d6;
+@define-color color12     #e0e0e0;
+@define-color color13     #eaeaea;
+@define-color color14     #f2f2f2;
+@define-color color15     #ffffff;

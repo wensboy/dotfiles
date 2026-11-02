@@ -1,0 +1,14 @@
+{
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "persistent-workspaces": {
+      "*": 3
+    },
+    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e+1\"})' ",
+    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({workspace=\"e-1\"})' "
+  },
+  "hyprland/window": {
+    "format": "{class} {title}",
+    "max-length": 60
+  }
+}
