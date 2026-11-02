@@ -2,17 +2,17 @@
   "layer": "top",
   "position": "top",
   "height": 28,
-  "width": 1728,
-  "margin-top": 1,
+  "width": 1920,
+  "output": [
+    "eDP-1"
+  ],
 
   "modules-left": [
-    "sway/workspaces",
+    "hyprland/workspaces",
     "custom/arrow-right#workspaces",
-    "sway/mode",
-    "sway/window",
+    "hyprland/window",
   ],
   "modules-center": [
-    "sway/scratchpad",
     "custom/arrow-left#day",
     "clock#day",
     "custom/arrow-left#time",
@@ -20,7 +20,6 @@
     "custom/arrow-right#time",
     "clock#date",
     "custom/arrow-right#date",
-    "sway/scratchpad#invisible",
   ],
   "modules-right": [
     "tray",
@@ -63,18 +62,45 @@
     },
   },
 
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "disable-scroll": false,
+    "smooth-scrolling-threshold": 1,
+    "enable-bar-scroll": true,
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "active": "󰮔",
+      "default": "󰋗",
+    },
+    "persistent-workspaces": {
+      "*": [ 1, 2, 3]
+    },
+    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
+    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+  },
+
   "sway/mode": {
     "format": "{}:",
     "tooltip": false,
   },
 
   "sway/window": {
-    "format": {},
+    "format": "{}",
     "max-length": 45,
     "tooltip": false,
     "rewrite": {
       "(.*) - Ablaze Floorp": "$1",
     },
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 45,
+    "tooltip": false,
+    "rewrite": {},
   },
 
   //-----	CENTER MODULES: -----
@@ -140,7 +166,7 @@
 
   "network": {
     "format": "{ifname}",
-    "format-wifi": "{icon}",
+    "format-wifi": "{icon} {essid}",
     "format-ethernet": "󰈀",
     "format-disabled": "⚠",
     "format-disconnected": "󰤮",
@@ -176,7 +202,7 @@
 
   "battery": {
     "format-full": "󰁹",
-    "tooltip-format-full": "Full",
+    "tooltip-format-full": "100%",
 
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
     "format": "{icon}",
