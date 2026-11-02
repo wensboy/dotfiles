@@ -5,19 +5,23 @@
 -- ]]
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local rofiEntry = "~/.config/rofi/entry.sh" -- rofi entry
+local waybarEntry = "~/.config/waybar/entry.sh" -- waybar entry
 
 -- Programs used by the bindings below
 local terminal = "foot"
 local fileManager = "nautilus"
-local launcher = "~/.config/rofi/entry.sh launcher"
-local windowSwitcher = "~/.config/rofi/entry.sh window"
+local launcher = rofiEntry .. " launcher"
+local windowSwitcher = rofiEntry .. " window"
 local lock = "hyprlock"
-local menu = "~/.config/rofi/entry.sh dmenu"
+local menu = rofiEntry .. " dmenu"
 
 -- Programs used by the autostart below
 local ime = "fcitx5"
 local notify = "mako"
 local idle = "hypridle"
+local statusBar = waybarEntry .. " start"
+local wpc = "hyprpaper"
 
 -------------------
 ---- AUTOSTART ----
@@ -34,7 +38,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd(idle)
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
-	hl.exec_cmd("waybar & hyprpaper")
+	hl.exec_cmd(statusBar)
+	hl.exec_cmd(wpc)
 end)
 
 ---------------------
@@ -120,3 +125,6 @@ hl.bind("Print", hl.dsp.exec_cmd('grim - | satty -f - --copy-command wl-copy -o 
 
 -- clipboard manager
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd('cliphist list | ~/.config/rofi/entry.sh dmenu -display-columns 2 | cliphist decode | wl-copy'))
+
+-- status bar
+hl.bind("ALT + B", hl.dsp.exec_cmd(waybarEntry .. " toggle"))
