@@ -3,6 +3,7 @@
     "format": "  {:%H:%M}",
     "format-alt": "{:%A, %B %d, %Y (%R)} 󰃰 ",
     "tooltip-format": "{calendar}",
+    "locale": "en_US.UTF-8",
     "calendar": {
       "mode"             : "month",
       "mode-mon-col"     : 3,

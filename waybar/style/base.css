@@ -32,6 +32,7 @@ window#waybar {
 }
 
 tooltip {
+  font-family: "Noto Sans Mono CJK SC";
   background: @panel;
   border: 1px solid @border;
   border-radius: 0;
