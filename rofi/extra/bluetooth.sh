@@ -19,7 +19,6 @@
 
 # Constants
 divider="---------"
-goback="Back"
 
 # Checks if bluetooth controller is powered on
 power_on() {
@@ -229,15 +228,15 @@ device_menu() {
     fi
     paired=$(device_paired "$mac")
     trusted=$(device_trusted "$mac")
-    options="$connected\n$paired\n$trusted\n$divider\n$goback\nExit"
+    options="$connected\n$paired\n$trusted"
 
     # Open rofi menu, read chosen option
     chosen="$(echo -e "$options" | $rofi_command "$device_name")"
 
     # Match chosen option to command
     case "$chosen" in
-        "" | "$divider")
-            echo "No option chosen."
+        "")
+            show_bluetooth_menu
             ;;
         "$connected")
             toggle_connection "$mac"
@@ -247,9 +246,6 @@ device_menu() {
             ;;
         "$trusted")
             toggle_trust "$mac"
-            ;;
-        "$goback")
-            show_bluetooth_menu
             ;;
     esac
 }
@@ -270,10 +266,10 @@ show_bluetooth_menu() {
         discoverable=$(discoverable_on)
 
         # Options passed to rofi
-        options="$devices\n$divider\n$power\n$scan\n$pairable\n$discoverable\nExit"
+        options="$devices\n$divider\n$power\n$scan\n$pairable\n$discoverable"
     else
         power="Power: off"
-        options="$power\nExit"
+        options="$power"
     fi
 
     # Open rofi menu, read chosen option

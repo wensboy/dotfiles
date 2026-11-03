@@ -6,100 +6,159 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 FIELDS=SSID,SECURITY
-POSITION=0
-YOFF=0
-XOFF=0
-FONT="DejaVu Sans Mono 8"
 
 if [ -r "$DIR/config" ]; then
 	source "$DIR/config"
 elif [ -r "$HOME/.config/rofi/wifi" ]; then
 	source "$HOME/.config/rofi/wifi"
 else
-	echo "WARNING: config file not found! Using default values."
+	echo "WARNING: config file not found! Using default values." >&2
 fi
 
 # extra arguments (e.g. -theme) are forwarded to rofi, see rofi/entry.sh
 rofi_command="rofi -dmenu $*"
 
-LIST=$(nmcli --fields "$FIELDS" device wifi list | sed '/^--/d')
-# Dynamically change the height of the rofi menu
-LINENUM=$(echo "$LIST" | wc -l)
-# Gives a list of known connections so we can parse it later
-KNOWNCON=$(nmcli connection show)
-# Really janky way of telling if there is currently a connection
-CONSTATE=$(nmcli -fields WIFI g)
+DIVIDER='---------'
+MANUAL='manual'
+RESCAN='rescan'
+CONNECTED='connected'
+CONNECT='connect'
+FORGET='forget'
 
-CURRSSID=$(LANGUAGE=C nmcli -t -f active,ssid dev wifi | awk -F: '$1 ~ /^yes/ {print $2}')
+MANUAL_HINT='enter the SSID of the network (SSID,password)'
+PASSWORD_HINT='if connection is stored, hit enter'
 
-if [[ ! -z $CURRSSID ]]; then
-	HIGHLINE=$(echo  "$(echo "$LIST" | awk -F "[  ]{2,}" '{print $1}' | grep -Fxn -m 1 "$CURRSSID" | awk -F ":" '{print $1}') + 1" | bc )
-fi
+wifi_enabled() {
+	[[ $(nmcli -fields WIFI g) == *enabled* ]]
+}
 
-# HOPEFULLY you won't need this as often as I do
-# If there are more than 8 SSIDs, the menu will still only have 8 lines
-if [ "$LINENUM" -gt 8 ] && [[ "$CONSTATE" =~ "enabled" ]]; then
-	LINENUM=8
-elif [[ "$CONSTATE" =~ "disabled" ]]; then
-	LINENUM=1
-fi
+saved_connections() {
+	nmcli -t -f NAME connection show
+}
 
+ssid_list() {
+	# drop the column header so it can not be picked as a network name
+	nmcli --fields "$FIELDS" device wifi list | sed '/^--/d;1d'
+}
 
-if [[ "$CONSTATE" =~ "enabled" ]]; then
-	TOGGLE="toggle off"
-elif [[ "$CONSTATE" =~ "disabled" ]]; then
-	TOGGLE="toggle on"
-fi
+# entries come from stdin, the prompt and the entry placeholder are per view
+pick() {
+	local prompt="$1"
+	local placeholder="$2"
+	shift 2
 
+	$rofi_command -p "$prompt" -theme-str "entry { placeholder: \"$placeholder\"; }" "$@"
+}
 
+# drop everything after the first column of `nmcli device wifi list`
+entry_ssid() {
+	local ssid=${1%%  *}
+	printf '%s\n' "$ssid"
+}
 
-# only highlight the active row when one is known
-rofi_args=(-lines "$LINENUM")
-[[ -n "$HIGHLINE" ]] && rofi_args+=(-a "$HIGHLINE")
+connect_ssid() {
+	local entry="$1"
+	local ssid password
 
-CHENTRY=$(echo -e "$TOGGLE\nmanual\n$LIST" | uniq -u | $rofi_command -p "Wi-Fi SSID: " "${rofi_args[@]}")
-#echo "$CHENTRY"
-CHSSID=$(echo "$CHENTRY" | sed  's/\s\{2,\}/\|/g' | awk -F "|" '{print $1}')
-#echo "$CHSSID"
+	ssid=$(entry_ssid "$entry")
+	[ -z "$ssid" ] && return 0
 
-# If the user inputs "manual" as their SSID in the start window, it will bring them to this screen
-if [ "$CHENTRY" = "manual" ] ; then
-	# Manual entry of the SSID and password (if appplicable)
-	MSSID=$(echo "enter the SSID of the network (SSID,password)" | $rofi_command -p "Manual Entry: " -lines 1)
-	# Separating the password from the entered string
-	MPASS=$(echo "$MSSID" | awk -F "," '{print $2}')
-
-	#echo "$MSSID"
-	#echo "$MPASS"
-
-	# If the user entered a manual password, then use the password nmcli command
-	if [ "$MPASS" = "" ]; then
-		nmcli dev wifi con "$MSSID"
-	else
-		nmcli dev wifi con "$MSSID" password "$MPASS"
+	# a stored connection only needs to be brought up
+	if grep -Fxq -- "$ssid" <<< "$(saved_connections)"; then
+		nmcli connection up "$ssid"
+		return 0
 	fi
 
-elif [ "$CHENTRY" = "toggle on" ]; then
-	nmcli radio wifi on
+	if [[ $entry =~ WPA|WEP|SAE|802\.1X ]]; then
+		password=$(echo "$PASSWORD_HINT" | pick 'password:' 'enter password' -lines 1)
 
-elif [ "$CHENTRY" = "toggle off" ]; then
-	nmcli radio wifi off
-
-else
-
-	# If the connection is already in use, then this will still be able to get the SSID
-	if [ "$CHSSID" = "*" ]; then
-		CHSSID=$(echo "$CHENTRY" | sed  's/\s\{2,\}/\|/g' | awk -F "|" '{print $3}')
-	fi
-
-	# Parses the list of preconfigured connections to see if it already contains the chosen SSID. This speeds up the connection process
-	if [[ $(echo "$KNOWNCON" | grep "$CHSSID") = "$CHSSID" ]]; then
-		nmcli con up "$CHSSID"
-	else
-		if [[ "$CHENTRY" =~ "WPA2" ]] || [[ "$CHENTRY" =~ "WEP" ]]; then
-			WIFIPASS=$(echo "if connection is stored, hit enter" | $rofi_command -p "password: " -lines 1)
+		# cancelled, or the hint row was picked instead of typing a password
+		if [ -z "$password" ] || [ "$password" = "$PASSWORD_HINT" ]; then
+			return 0
 		fi
-		nmcli dev wifi con "$CHSSID" password "$WIFIPASS"
+
+		nmcli dev wifi con "$ssid" password "$password"
+	else
+		nmcli dev wifi con "$ssid"
+	fi
+}
+
+manual_entry() {
+	local input ssid password
+
+	input=$(echo "$MANUAL_HINT" | pick 'Manual Entry:' 'SSID,password' -lines 1)
+
+	# cancelled, or the hint row was picked instead of typing an SSID
+	if [ -z "$input" ] || [ "$input" = "$MANUAL_HINT" ]; then
+		return 0
 	fi
 
-fi
+	ssid=${input%%,*}
+	password=${input#*,}
+	[ "$password" = "$input" ] && password=''
+
+	if [ -z "$password" ]; then
+		nmcli dev wifi con "$ssid"
+	else
+		nmcli dev wifi con "$ssid" password "$password"
+	fi
+}
+
+saved_actions() {
+	local name="$1"
+	local action
+
+	action=$(printf '%s\n%s\n' "$CONNECT" "$FORGET" |
+		pick "Action: $name" 'connect or forget' -lines 2)
+
+	case "$action" in
+		"$CONNECT") nmcli connection up "$name" ;;
+		"$FORGET") nmcli connection delete "$name" ;;
+		*) return 0 ;;
+	esac
+}
+
+saved_menu() {
+	local names choice
+
+	while true; do
+		names=$(saved_connections)
+		[ -z "$names" ] && return 0
+
+		choice=$(printf '%s\n' "$names" | pick 'Connected:' 'Search connection')
+
+		case "$choice" in
+			'') return 0 ;;
+			*) saved_actions "$choice" ;;
+		esac
+	done
+}
+
+main_menu() {
+	local toggle
+
+	if wifi_enabled; then
+		toggle='toggle off'
+	else
+		toggle='toggle on'
+	fi
+
+	# actions first, the scan result last and separated by a divider
+	printf '%s\n' "$toggle" "$MANUAL" "$RESCAN" "$CONNECTED" "$DIVIDER" "$(ssid_list)" |
+		pick 'Wi-Fi:' 'Search SSID'
+}
+
+while true; do
+	choice=$(main_menu)
+
+	case "$choice" in
+		'') exit 0 ;;
+		'toggle on') nmcli radio wifi on ;;
+		'toggle off') nmcli radio wifi off ;;
+		"$MANUAL") manual_entry ;;
+		"$RESCAN") nmcli dev wifi rescan ;;
+		"$CONNECTED") saved_menu ;;
+		"$DIVIDER") continue ;;
+		*) connect_ssid "$choice" ;;
+	esac
+done
