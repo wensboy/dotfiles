@@ -63,6 +63,7 @@ hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(lock)) -- lock the screen
 hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(menu)) -- session menu
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("~/.config/rofi/entry.sh bluetooth")) -- bluetooth
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("~/.config/rofi/entry.sh network")) -- network
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("~/.config/rofi/entry.sh wallpaper")) -- wallpaper
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))

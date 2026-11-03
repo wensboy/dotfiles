@@ -19,6 +19,7 @@ window_theme='window'
 dmenu_theme='dmenu'
 bluetooth_theme='bluetooth'
 network_theme='network'
+wallpaper_theme='wallpaper'
 default_theme='default'
 
 require_var() {
@@ -189,6 +190,11 @@ main() {
             require_var network_theme
             show_extra "network/wifi" "$network_theme"
             ;;
+        wallpaper)
+            require_var extra_dir
+            require_var wallpaper_theme
+            show_extra "wallpaper" "$wallpaper_theme"
+            ;;
         dmenu)
             require_var dmenu_theme
             shift
@@ -200,7 +206,7 @@ main() {
             fi
             ;;
         *)
-            die "unknown argument: '$1'. expected one of: launcher, window, dmenu, bluetooth, network, default."
+            die "unknown argument: '$1'. expected one of: launcher, window, dmenu, bluetooth, network, wallpaper, default."
             ;;
     esac
 }
