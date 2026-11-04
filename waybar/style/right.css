@@ -16,19 +16,28 @@
 }
 
 #bluetooth.disabled,
-#bluetooth.off {
+#bluetooth.off,
+#network.disabled,
+#network.disconnected,
+#pulseaudio.muted {
   color: @muted;
 }
 
-#battery.charging {
-  color: @foreground;
+#battery.charging,
+#battery.full,
+#battery.not-charging {
+  color: @ok;
 }
 
-#battery.warning {
-  color: @color15;
+#battery.discharging {
+  color: @info;
 }
 
-#battery.critical {
-  color: @color15;
+#battery.discharging.warning {
+  color: @warning;
+}
+
+#battery.discharging.critical {
+  color: @critical;
   font-weight: 700;
 }

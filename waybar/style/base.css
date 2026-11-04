@@ -3,6 +3,11 @@
 @define-color divider alpha(@foreground, 0.30);
 @define-color muted   alpha(@foreground, 0.55);
 
+@define-color ok        #85b56b;
+@define-color info      #5f9bd6;
+@define-color warning   #d6b04c;
+@define-color critical  #d45d5d;
+
 * {
   font-family: "Maple Mono NF", "Font Awesome 7 Free", "Font Awesome 7 Brands", "FontAwesome";
   font-size: 12px;
