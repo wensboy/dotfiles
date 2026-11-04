@@ -25,23 +25,42 @@
       "min-brightness": 4
   },
   "network": {
+    "family": "ipv4",
     "format": "{ifname}",
-    "format-wifi": "  {essid}({signalStrength}%)",
-    "format-ethernet": "  {ifname}",
-    "format-disconnected": "",
-    "tooltip-format-wifi": "UP: {bandwidthUpBytes} DOWN: {bandwidthDownBytes}",
-    "tooltip-format-ethernet": "UP: {bandwidthUpBytes} DOWN: {bandwidthDownBytes}",
-    "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50
+    "format-wifi": "{icon} {essid}({signalStrength}%)",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-disabled": " Airplane",
+    "format-disconnected": "󰤫 Outline",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "tooltip-format-wifi": "󱚺 : {bandwidthUpBytes} 󱚶 : {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "󱚺 : {bandwidthUpBytes} 󱚶 : {bandwidthDownBytes}",
+    "tooltip-format-disconnected": "No Network",
+    "tooltip-format-disabled": "Airplane Mode",
+    "max-length": 50,
+    "on-click": "~/.config/rofi/entry.sh network"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-on": " {status}",
+    "format-off": "󰂲 {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {icon} {device_alias}",
+    "format-icons": ["󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥈"],
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "blueman-manager",
+    "on-click-right": "~/.config/waybar/script/toggle-bluetooth.sh"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-bluetooth": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
     "format-muted": "",
     "format-icons": {
       "headphone": "",
-      "hands-free": "󰂑",
-      "headset": "󰂑",
+      "hands-free": "󰏻",
+      "headset": "",
       "phone": "",
       "phone-muted": "",
       "portable": "",
@@ -49,7 +68,8 @@
       "default": ["", ""]
     },
     "scroll-step": 2,
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
+    "max-volume": 80
   },
   "battery": {
     "format": "{icon} {capacity}%",

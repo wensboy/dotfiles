@@ -9,5 +9,5 @@
   ],
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock"],
-  "modules-right": ["tray", "backlight", "network", "pulseaudio", "battery"]
+  "modules-right": ["tray", "backlight", "network", "bluetooth", "pulseaudio", "battery"]
 }

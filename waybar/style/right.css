@@ -1,6 +1,7 @@
 #tray,
 #backlight,
 #network,
+#bluetooth,
 #pulseaudio,
 #battery {
   border-left: 1px solid @divider;
@@ -12,6 +13,11 @@
 
 #tray > .needs-attention {
   color: @color15;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+  color: @muted;
 }
 
 #battery.charging {

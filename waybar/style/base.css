@@ -25,6 +25,7 @@ window#waybar {
 #tray,
 #backlight,
 #network,
+#bluetooth,
 #pulseaudio,
 #battery {
   padding: 0 8px;
