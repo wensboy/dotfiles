@@ -1,59 +1,46 @@
-## Dotfiles
+# wensboy's Dotfiles
 
-**tips: currently under improvement**
+A lightweight personal configuration that follows the KISS principle throughout, keeping things simple and flexible.
 
-> Some considerations regarding personal workflow (work environment):
+- Minimal: install as few components as the system strictly requires, so the setup fits a personal workflow.
+- Source as code: prefer changing the source over configuration — code is the configuration.
+- Structured: operations flow through a shared structure, so code can be reused and fine-tuned, making customization fast and simple.
+- 1-to-N: define once, deploy to many machines and adapt across distributions.
+- Reference: a single repository is the source of truth; configuration is linked in place, so edits need no full reload.
+- Zero intrusion: existing configuration is avoided automatically rather than overwritten.
 
-- past:
-  - Frequent switching between Linux distributions makes it difficult to focus on learning the underlying Linux system.
-  - Without maintaining a single configuration repository, every time a distro is switched, it requires rethinking and reconfiguring, wasting a lot of time.
-  - There is no efficient work standard, and the various definitions are too flexible.
-- now:
-  - Build a single configuration repository, maintain consistency across multiple devices, synchronize at the repository level, maintain a minimum scalable configuration, and dynamically adjust each device.
-  - Focus on the application and in-depth use of a single Linux distribution, avoiding over-configuration as much as possible, and prioritizing efficiency.
-  - Keep it simple and clean.
-
-> My personal definition of simplicity:
-
-- No complicated or flashy UI elements.
-- Tool combination.
-- Text-first.
-- Environmental isolation.
-
-> Setting up the personal work environment:
-
-**dependencies**
-- terminal interface
-    - [st]()
-    - [tmux]()
-    - [fzf]()
-    - [tuigreet](https://github.com/apognu/tuigreet)
-- wm
-    - [dwm]()
-    - [sway]()
-    - [i3]()
-    - [hypr]()
-- menu
-    - [rofi]()
-- env
-    - [nix flake]()
-    - [podman]()
-- editor
-    - [vim]()
-    - [vsc]()
-
-**awesome projects**
-
-
-> How to use the current project:
-
-Note: You should always ensure that you use it on a base arch distro; there is currently no reason to adapt it for other distros.
+## Usage
 
 ```bash
-git clone --depth=1 <repo_url>
-cd dotfiles && chmod u+x ./init.sh
-so ./init.sh
-sync_config
+git clone --depth=1 https://github.com/wensboy/dotfiles.git
+
+# distro package set and the entries to link live here
+$EDITOR dotfiles/scripts/config.sh
+
+# install packages, precheck targets, link with stow, verify
+./dotfiles/init.sh
 ```
 
-Edit the script file to meet your configuration needs.
+`init.sh` detects the distro from `/etc/os-release`, installs the matching `base` and `wm` package groups (including `stow`), links every entry in `ENTRIES`, then verifies each link points back into the repository.
+
+Entries that already link back into the repository are skipped, so re-running is safe. Any other existing target aborts the run before anything is touched — resolve it first.
+
+## Assets
+
+![overview](./assets/overview.png)
+
+![launcher](./assets/launcher.png)
+
+## Extensions
+
+Every extension is implemented with **rofi and shell scripts**; the related key bindings live in `hypr/modules/keybind.lua`. Currently implemented:
+- launcher
+- window switcher
+- bluetooth
+- network
+- session menu
+- clipboard
+
+## License
+
+[MIT](./LICENSE)
