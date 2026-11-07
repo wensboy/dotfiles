@@ -40,6 +40,7 @@ Every extension is implemented with **rofi and shell scripts**; the related key 
 - network
 - session menu
 - clipboard
+- wallpaper switcher
 
 ## License
 
