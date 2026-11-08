@@ -1,0 +1,16 @@
+# .bash_ext: Local-first extension, host-level configuration.
+# cp ./.bash_ext ~
+
+# domain: go
+GO_VERSION="1.26.4"
+GO_ROOT="/usr/local/bin/go/${GO_VERSION}"
+[[ -d ${GO_ROOT}/bin ]] && add_to_path "${GO_ROOT}/bin"
+command -v go >/dev/null 2>&1 && add_to_path "$(go env GOPATH)/bin"
+# end domain: go
+
+# domain: fnm
+FNM_ROOT="$HOME/.local/share/fnm/1.39.0"
+[[ -d $FNM_ROOT ]] && add_to_path "$FNM_ROOT"
+
+command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd --shell bash)"
+# end domain: fnm

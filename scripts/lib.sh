@@ -76,18 +76,21 @@ stage_packages() {
 
 stage_precheck() {
 	local -a conflicts=()
-	local pkg dst
+	local pkg path dst
 
 	step 'precheck targets'
 	command -v stow >/dev/null 2>&1 || die 'stow is not installed'
 
 	while IFS= read -r pkg; do
-		[[ -d $REPO_DIR/$pkg/${ENTRIES[$pkg]} ]] || die "missing package: $(short "$REPO_DIR/$pkg")"
-		dst="$TARGET_DIR/${ENTRIES[$pkg]}"
-		[[ -e $dst || -L $dst ]] || continue
-		# already pointing into the repo is the end state a re-run should reach,
-		# so only anything else counts as a conflict
-		link_ok "$pkg" || conflicts+=("$dst")
+		for path in ${ENTRIES[$pkg]}; do
+			[[ -e $REPO_DIR/$pkg/$path ]] || die "missing package file: $(short "$REPO_DIR/$pkg/$path")"
+		done
+		# a fully linked package is the end state a re-run should reach
+		link_ok "$pkg" && continue
+		for path in ${ENTRIES[$pkg]}; do
+			dst="$TARGET_DIR/$path"
+			[[ -e $dst || -L $dst ]] && conflicts+=("$dst")
+		done
 	done < <(entry_keys)
 
 	if ((${#conflicts[@]})); then
@@ -121,11 +124,13 @@ stage_sync() {
 }
 
 sync_entry() {
-	local pkg="$1" output
+	local pkg="$1" output path
 
 	# create the parent first, otherwise stow folds at the highest missing
 	# directory and would turn something like ~/.local into a link into the repo
-	mkdir -p -- "$(dirname -- "$TARGET_DIR/${ENTRIES[$pkg]}")"
+	for path in ${ENTRIES[$pkg]}; do
+		mkdir -p -- "$(dirname -- "$TARGET_DIR/$path")"
+	done
 
 	if output=$(stow --dir "$REPO_DIR" --target "$TARGET_DIR" --verbose=0 "$pkg" 2>&1); then
 		return 0
@@ -163,10 +168,10 @@ stage_verify() {
 }
 
 link_ok() {
-	local pkg="$1"
-	local dst="$TARGET_DIR/${ENTRIES[$pkg]}"
-	local src="$REPO_DIR/$pkg/${ENTRIES[$pkg]}"
+	local pkg="$1" path
 
-	[[ -L $dst ]] || return 1
-	[[ "$(readlink -f -- "$dst")" == "$(readlink -f -- "$src")" ]]
+	for path in ${ENTRIES[$pkg]}; do
+		[[ -L $TARGET_DIR/$path ]] || return 1
+		[[ "$(readlink -f -- "$TARGET_DIR/$path")" == "$(readlink -f -- "$REPO_DIR/$pkg/$path")" ]] || return 1
+	done
 }

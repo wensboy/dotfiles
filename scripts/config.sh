@@ -22,7 +22,7 @@ declare -A PKG_QUERY=(
 PKG_GROUPS=(base wm)
 
 declare -A PKG_BASE=(
-	[arch]="stow git vim tmux  foot  brightnessctl bluez bluez-utils"
+	[arch]="stow git vim tmux foot brightnessctl bluez bluez-utils btop bat fzf fd ripgrep"
 	[debian]="stow fcitx5 tmux neovim foot rofi brightnessctl bluez"
 )
 
@@ -31,10 +31,11 @@ declare -A PKG_WM=(
 	[debian]="sway waybar mako"
 )
 
-# stow packages, keyed by directory under REPO_DIR. Each package holds one mirror
-# of the target tree, so the value is the path stow links relative to TARGET_DIR.
+# stow packages, keyed by directory under REPO_DIR. Each package holds a mirror of
+# the target tree, the value lists the paths stow links relative to TARGET_DIR.
 # sway is deliberately absent: it never runs alongside hypr, so it stays unsynced.
 declare -A ENTRIES=(
+	[bash]=".bashrc .bash_aliases"
 	[fcitx5]=.config/fcitx5
 	[fcitx5-themes]=.local/share/fcitx5/themes
 	[foot]=.config/foot
