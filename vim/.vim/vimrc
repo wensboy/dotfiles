@@ -1,0 +1,32 @@
+let s:vimrc_switch = v:true
+
+function! ApplyComment(sign) abort range
+    for lnum in range(a:firstline,a:lastline)
+        let line = getline(lnum)
+        if line == ''
+           continue
+        endif
+        if line =~ '^\s*"'
+           continue
+        endif
+        let indent = matchstr(line,'^\s*')
+        let content = line[len(indent):]
+        call setline(lnum,indent.a:sign.content)
+    endfor
+endfunction
+
+function! ApplyUncomment(sign) abort range
+    for lnum in range(a:firstline,a:lastline)
+        let line = getline(lnum)
+        if line == ''
+            continue
+        endif
+        let indent = matchstr(line,'^\s*')
+        let prefix = matchstr(line,'^\s*'.a:sign)
+        let content = indent.line[len(prefix):]
+        call setline(lnum,content)
+    endfor
+endfunction
+
+finish
+        Author: wens

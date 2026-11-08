@@ -36,6 +36,7 @@ declare -A PKG_WM=(
 # sway is deliberately absent: it never runs alongside hypr, so it stays unsynced.
 declare -A ENTRIES=(
 	[bash]=".bashrc .bash_aliases"
+	[vim]=".vim"
 	[fcitx5]=.config/fcitx5
 	[fcitx5-themes]=.local/share/fcitx5/themes
 	[foot]=.config/foot
