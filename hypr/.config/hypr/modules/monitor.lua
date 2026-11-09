@@ -14,16 +14,7 @@ for _, mon in ipairs(monitors) do
         output = mon.name,
         mode = "preferred",
         position = "auto",
-        scale = 1
+        scale = 1,
+        bitdepth = 8,
     })
-    
-    if mon.name:match("^eDP") then
-        hl.monitor({
-            output = mon.name,
-            mode = "preferred",
-            position = "auto",
-            scale = 1.2,
-			bitdepth = 8,
-        })
-    end
 end
