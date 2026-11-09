@@ -4,12 +4,26 @@
 -- @Description: hyprland monitor configuration
 -- ]]
 
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+-- See https://wiki.hypr.land/configuring/core/monitors/
+-- `hyprctl monitors` to show monitors info
 
-hl.monitor({
-	output = "eDP-1",
-	mode = "preferred",
-	position = "auto",
-	scale = "1",
-	bitdepth = 8,
-})
+local monitors = hl.get_monitors()
+
+for _, mon in ipairs(monitors) do
+    hl.monitor({
+        output = mon.name,
+        mode = "preferred",
+        position = "auto",
+        scale = 1
+    })
+    
+    if mon.name:match("^eDP") then
+        hl.monitor({
+            output = mon.name,
+            mode = "preferred",
+            position = "auto",
+            scale = 1.2,
+			bitdepth = 8,
+        })
+    end
+end
