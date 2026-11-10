@@ -4,7 +4,7 @@
 -- @Description: personal hyprland configurations 
 -- ]]
 
-require("modules.monitor")
 require("modules.option")
 require("modules.keybind")
+require("modules.monitor")
 require("modules.rule")
