@@ -6,5 +6,5 @@
 
 require("modules.option")
 require("modules.keybind")
-require("modules.monitor")
 require("modules.rule")
+require("modules.monitor")
