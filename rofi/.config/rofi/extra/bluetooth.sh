@@ -265,8 +265,12 @@ show_bluetooth_menu() {
         pairable=$(pairable_on)
         discoverable=$(discoverable_on)
 
-        # Options passed to rofi
-        options="$devices\n$divider\n$power\n$scan\n$pairable\n$discoverable"
+        # controls first, devices below the divider, matching the network menu
+        if [[ -n $devices ]]; then
+            options="$power\n$scan\n$pairable\n$discoverable\n$divider\n$devices"
+        else
+            options="$power\n$scan\n$pairable\n$discoverable"
+        fi
     else
         power="Power: off"
         options="$power"

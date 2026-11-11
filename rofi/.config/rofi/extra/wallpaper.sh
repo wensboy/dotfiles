@@ -21,7 +21,19 @@ mapfile -t images < <(
 )
 [ ${#images[@]} -eq 0 ] && die "no image found in $WALLPAPER_DIR"
 
-chosen=$(printf '%s\n' "${images[@]#"$WALLPAPER_DIR/"}" | $rofi_command -p 'Wallpaper:')
+# enabled outputs, read-only context above the divider
+monitors=''
+if command -v wlr-randr >/dev/null 2>&1; then
+	monitors=$(wlr-randr 2>/dev/null | awk '
+		/^[^[:space:]]/ { pending = $0; next }
+		/^[[:space:]]+Enabled: yes/ && pending != "" { print pending; pending = "" }
+	' | sed 's/^\([^ ]*\) "\(.*\)"$/\1  \2/')
+fi
+
+menu=("${images[@]#"$WALLPAPER_DIR/"}")
+[[ -n $monitors ]] && menu=("$monitors" '---------' "${menu[@]}")
+
+chosen=$(printf '%s\n' "${menu[@]}" | $rofi_command -p 'Wallpaper:')
 [ -z "$chosen" ] && exit 0
 
 wallpaper="$WALLPAPER_DIR/$chosen"
