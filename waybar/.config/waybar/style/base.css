@@ -2,6 +2,7 @@
 @define-color border  alpha(@foreground, 0.12);
 @define-color divider alpha(@foreground, 0.30);
 @define-color muted   alpha(@foreground, 0.55);
+@define-color accent  alpha(@color6, 0.60);
 
 @define-color ok        #85b56b;
 @define-color info      #5f9bd6;

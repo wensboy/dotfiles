@@ -9,7 +9,8 @@
 @define-color color3      #333333;
 @define-color color4      #4d4d4d;
 @define-color color5      #666666;
-@define-color color6      #808080;
+/* ansi cyan slot, carries the accent shared with the hyprland active border */
+@define-color color6      #33ccff;
 @define-color color7      #999999;
 @define-color color8      #b3b3b3;
 @define-color color9      #c0c0c0;
