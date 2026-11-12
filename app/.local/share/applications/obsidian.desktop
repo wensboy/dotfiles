@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=obsidian
+Exec=/home/wens/.local/bin/obsidian/Obsidian-1.13.7.AppImage
+Icon=/home/wens/.local/bin/obsidian/icon.png
+Terminal=false
+Categories=Application;

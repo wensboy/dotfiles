@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=FlClash
+NoDisplay=true
+Exec="/home/wens/.local/bin/FlClash/FlClash-0.9.1-linux-amd64.AppImage" %u
+MimeType=x-scheme-handler/clash;x-scheme-handler/clashmeta;x-scheme-handler/flclash;

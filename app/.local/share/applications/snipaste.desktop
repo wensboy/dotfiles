@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=snipaste
+Exec=/home/wens/.local/bin/snipaste/Snipaste-2.11.3-x86_64.AppImage
+Icon=/home/wens/.local/bin/snipaste/snipaste.png
+Terminal=false
+Categories=Application;

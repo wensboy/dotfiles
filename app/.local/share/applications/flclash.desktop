@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=flclash
+Exec=prime-run /home/wens/.local/bin/FlClash/FlClash-0.9.1-linux-amd64.AppImage
+Icon=/home/wens/.local/bin/FlClash/icon.png
+Terminal=false
+Categories=Application;

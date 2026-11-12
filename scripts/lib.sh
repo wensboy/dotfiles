@@ -3,8 +3,16 @@
 
 DISTRO=''
 
-# stow needs a stable order for readable output, associative arrays have none.
-entry_keys() { printf '%s\n' "${!ENTRIES[@]}" | sort; }
+# associative arrays have no stable order, so both listings are sorted
+entry_keys() {
+	((${#ENTRIES[@]})) || return 0
+	printf '%s\n' "${!ENTRIES[@]}" | sort
+}
+
+copy_keys() {
+	((${#COPY_ENTRIES[@]})) || return 0
+	printf '%s\n' "${!COPY_ENTRIES[@]}" | sort
+}
 
 # package list of <group> for <distro>, resolved by name so a new group only
 # needs a table plus an entry in PKG_GROUPS
@@ -93,18 +101,25 @@ stage_precheck() {
 		done
 	done < <(entry_keys)
 
+	# copied packages never conflict, files already at the target are kept
+	while IFS= read -r pkg; do
+		for path in ${COPY_ENTRIES[$pkg]}; do
+			[[ -e $REPO_DIR/$pkg/$path ]] || die "missing package file: $(short "$REPO_DIR/$pkg/$path")"
+		done
+	done < <(copy_keys)
+
 	if ((${#conflicts[@]})); then
 		err 'target already exists, remove it before syncing:'
 		printf '%s\n' "${conflicts[@]}" | sed "s|^$HOME|~|" | detail
 		die 'aborted, nothing was changed'
 	fi
 
-	ok "${#ENTRIES[@]} targets free"
+	ok "${#ENTRIES[@]} to link, ${#COPY_ENTRIES[@]} to copy"
 }
 
 stage_sync() {
 	local i=1 pkg output
-	local total=${#ENTRIES[@]}
+	local total=$((${#ENTRIES[@]} + ${#COPY_ENTRIES[@]}))
 
 	step "sync entries ($total)"
 	mkdir -p -- "$TARGET_DIR"
@@ -121,6 +136,19 @@ stage_sync() {
 		fi
 		i=$((i + 1))
 	done < <(entry_keys)
+
+	while IFS= read -r pkg; do
+		printf '  [%d/%d] %-14s ' "$i" "$total" "$pkg"
+		if copy_ok "$pkg"; then
+			printf '%sunchanged%s\n' "$C_DIM" "$C_OFF"
+		elif output=$(copy_entry "$pkg"); then
+			printf '%scopied%s\n' "$C_OK" "$C_OFF"
+		else
+			printf '%sskipped%s\n' "$C_ERR" "$C_OFF"
+			printf '%s\n' "$output" | detail
+		fi
+		i=$((i + 1))
+	done < <(copy_keys)
 }
 
 sync_entry() {
@@ -143,21 +171,74 @@ sync_entry() {
 	return 1
 }
 
+# copy a package into place, files already present at the target are kept
+copy_entry() {
+	local pkg="$1" path src dst
+
+	for path in ${COPY_ENTRIES[$pkg]}; do
+		src="$REPO_DIR/$pkg/$path"
+		dst="$TARGET_DIR/$path"
+
+		if [[ -d $src ]]; then
+			mkdir -p -- "$dst"
+			copy_tree "$src" "$dst" || return 1
+		else
+			mkdir -p -- "$(dirname -- "$dst")"
+			cp -a -n -- "$src" "$dst" || return 1
+		fi
+	done
+}
+
+# rsync is preferred, cp -n is the fallback; both keep existing destinations
+copy_tree() {
+	if command -v rsync >/dev/null 2>&1; then
+		rsync -a --ignore-existing -- "$1/" "$2/"
+	else
+		cp -a -n -- "$1/." "$2/"
+	fi
+}
+
+# a copy package is complete when every source file exists at the target
+copy_ok() {
+	local pkg="$1" path file rel
+
+	for path in ${COPY_ENTRIES[$pkg]}; do
+		[[ -e $TARGET_DIR/$path ]] || return 1
+		if [[ -d $REPO_DIR/$pkg/$path ]]; then
+			while IFS= read -r -d '' file; do
+				rel="${file#"$REPO_DIR/$pkg/$path"}"
+				[[ -e $TARGET_DIR/$path$rel ]] || return 1
+			done < <(find "$REPO_DIR/$pkg/$path" -type f -print0)
+		else
+			[[ -e $TARGET_DIR/$path ]] || return 1
+		fi
+	done
+}
+
 stage_verify() {
-	local -a linked=() missing=()
+	local -a synced=() missing=()
 	local pkg
+	local total=$((${#ENTRIES[@]} + ${#COPY_ENTRIES[@]}))
 
 	step 'verify'
 	while IFS= read -r pkg; do
 		if link_ok "$pkg"; then
-			linked+=("$pkg")
+			synced+=("$pkg")
 		else
 			missing+=("$pkg")
 		fi
 	done < <(entry_keys)
 
-	ok "${#linked[@]}/${#ENTRIES[@]} entries linked"
-	item "${linked[*]:-none}"
+	while IFS= read -r pkg; do
+		if copy_ok "$pkg"; then
+			synced+=("$pkg")
+		else
+			missing+=("$pkg")
+		fi
+	done < <(copy_keys)
+
+	ok "${#synced[@]}/$total entries synced"
+	item "${synced[*]:-none}"
 
 	if ((${#missing[@]})); then
 		printf '\n'

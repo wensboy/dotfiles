@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=qq
+Exec=/home/wens/.local/bin/QQ/QQ_3.2.29_260528_x86_64_01.AppImage
+Icon=/home/wens/.local/bin/QQ/icon.png
+Terminal=false
+Categories=Application;

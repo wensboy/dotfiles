@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=vscode
+Exec=/home/wens/.local/bin/vscode/code
+Icon=/home/wens/.local/bin/vscode/resources/app/resources/linux/code.png
+Terminal=false
+Categories=Application;

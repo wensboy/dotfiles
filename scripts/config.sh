@@ -22,7 +22,7 @@ declare -A PKG_QUERY=(
 PKG_GROUPS=(base wm)
 
 declare -A PKG_BASE=(
-	[arch]="stow git vim tmux foot brightnessctl bluez bluez-utils btop bat fzf fd ripgrep jq wlr-randr"
+	[arch]="stow git vim tmux foot brightnessctl bluez bluez-utils btop bat fzf fd ripgrep jq wlr-randr rsync"
 	[debian]="stow fcitx5 tmux neovim foot rofi brightnessctl bluez"
 )
 
@@ -34,6 +34,12 @@ declare -A PKG_WM=(
 # stow packages, keyed by directory under REPO_DIR. Each package holds a mirror of
 # the target tree, the value lists the paths stow links relative to TARGET_DIR.
 # sway is deliberately absent: it never runs alongside hypr, so it stays unsynced.
+# Packages copied instead of linked, for targets that must stay real files. Same
+# layout as ENTRIES; files already present at the target are never overwritten.
+declare -A COPY_ENTRIES=(
+	[app]=".local/share/applications"
+)
+
 declare -A ENTRIES=(
 	[bash]=".bashrc .bash_aliases"
 	[vim]=".vim"
