@@ -7,8 +7,10 @@
  **/
 
 * {
-    background:     #282828FF;
-    background-alt: #353535FF;
+    /* 85% alpha matches hypr active_opacity; the alt layer stays lighter so the
+       inputbar and list keep their tint without hiding the wallpaper */
+    background:     #282828D9;
+    background-alt: #35353566;
     foreground:     #EBDBB2FF;
     selected:       #83A598FF;
     active:         #B8BB26FF;
