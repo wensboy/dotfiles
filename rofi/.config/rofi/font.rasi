@@ -10,3 +10,8 @@
 * {
     font: "Maple Mono NF 10";
 }
+
+/* the search glyph is drawn hollow by maple mono, fa7 keeps it solid */
+textbox-prompt-colon {
+    font: "Font Awesome 7 Free 10";
+}

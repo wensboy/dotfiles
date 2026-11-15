@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# Starts a scan of available broadcasting SSIDs
-# nmcli dev wifi rescan
+# Wi-Fi menu built on nmcli: radio toggle, rescan, manual entry, saved connections
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
