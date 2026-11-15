@@ -117,6 +117,7 @@ textbox-prompt-colon {
 }
 entry {
     enabled:                     true;
+    horizontal-align:            0.0;
     padding:                     5px 0px;
     background-color:            inherit;
     text-color:                  inherit;
@@ -278,9 +279,9 @@ button selected {
 message {
     enabled:                     true;
     margin:                      0px 0px 6px 0px;
-    padding:                     0px 2px;
-    border:                      0px solid;
-    border-radius:               0px 0px 0px 0px;
+    padding:                     6px;
+    border:                      2px solid;
+    border-radius:               10px;
     border-color:                @border-colour;
     background-color:            transparent;
     text-color:                  @foreground-colour;
@@ -293,7 +294,7 @@ textbox {
     background-color:            @alternate-background;
     text-color:                  @foreground-colour;
     vertical-align:              0.5;
-    horizontal-align:            0.0;
+    horizontal-align:            0.5;
     highlight:                   none;
     placeholder-color:           @foreground-colour;
     blink:                       true;

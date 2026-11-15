@@ -49,6 +49,7 @@ show() {
         return 1
     }
 
+    # drun/window get their title from the mode switcher built into the theme
     rofi -show "$mode" -theme "$theme_file"
 }
 
@@ -116,7 +117,8 @@ show_session_menu() {
 
     # rofi reads the options from stdin and prints the selected one to stdout
     local choice
-    choice="$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -p "$ico_lock Menu" -theme "$theme_file" "$@")"
+    choice="$(printf '%s\n' "${options[@]}" |
+        rofi -dmenu -i -p "$ico_lock Menu" -theme "$theme_file" -mesg 'Session' "$@")"
 
     case "${choice##* }" in
         Lock)     hyprlock ;;
@@ -128,15 +130,16 @@ show_session_menu() {
     esac
 }
 
-# run a script from the extra dir, the theme is forwarded to it as -theme
+# run a script from the extra dir, the theme and title are forwarded to it
 show_extra() {
-    if [[ $# -ne 2 ]]; then
-        printf 'error: invalid number of arguments: %d, expected 2.\n' "$#" >&2
+    if [[ $# -ne 3 ]]; then
+        printf 'error: invalid number of arguments: %d, expected 3.\n' "$#" >&2
         return 1
     fi
 
     local script="$1"
     local theme="$2"
+    local title="$3"
 
     local script_file="${extra_dir}/${script}.sh"
     if [[ ! -f "$script_file" ]]; then
@@ -152,7 +155,7 @@ show_extra() {
     theme_file="$(preflight "$theme")" || return 1
 
     # the script forwards its arguments to rofi, see extra/bluetooth.sh
-    "$script_file" -theme "$theme_file"
+    "$script_file" -theme "$theme_file" -mesg "$title"
 }
 
 main() {
@@ -183,24 +186,24 @@ main() {
         bluetooth)
             require_var extra_dir
             require_var bluetooth_theme
-            show_extra "bluetooth" "$bluetooth_theme"
+            show_extra "bluetooth" "$bluetooth_theme" "Bluetooth"
             ;;
         network)
             require_var extra_dir
             require_var network_theme
-            show_extra "network/wifi" "$network_theme"
+            show_extra "network/wifi" "$network_theme" "Wi-Fi"
             ;;
         wallpaper)
             require_var extra_dir
             require_var wallpaper_theme
-            show_extra "wallpaper" "$wallpaper_theme"
+            show_extra "wallpaper" "$wallpaper_theme" "Wallpaper"
             ;;
         dmenu)
             require_var dmenu_theme
             shift
             # entries piped in -> plain dmenu, otherwise the built-in session menu
             if [[ -p /dev/stdin || -f /dev/stdin ]]; then
-                show_menu "$dmenu_theme" "$@"
+                show_menu "$dmenu_theme" -mesg "Search" "$@"
             else
                 show_session_menu "$dmenu_theme" "$@"
             fi
